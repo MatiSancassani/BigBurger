@@ -1,7 +1,9 @@
 
-
 import { Link } from "react-router-dom"
+
+
 const Header = ({ isNavbarOpen }) => {
+
     return (
         <div id="header" className={`h-screen flex items-center justify-center transition-colors duration-300 ${isNavbarOpen ? "filter brightness-50" : "filter brightness-100"
             }`}>
@@ -22,6 +24,8 @@ const Header = ({ isNavbarOpen }) => {
                     </Link>
                 </div>
             </div>
+
+
         </div>
     )
 }

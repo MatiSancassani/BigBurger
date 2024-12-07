@@ -4,13 +4,13 @@ import Accordion from '../shared/Accordion'
 import { useEffect } from 'react'
 import { IoIosArrowBack } from "react-icons/io";
 import Footer from '../shared/Footer';
-
+import Demo from '../shared/Modal';
 const BurguerDetail = () => {
     useEffect(() => {
         window.scrollTo(0, 0); // Resetea el scroll al cargar la página
     }, []);
     return (
-        <div className="">
+        <div className=''>
             <Link to="/menu">
                 <div className="fixed top-0 z-20 bg-black w-screen flex items-center justify-start text-[1rem] text-white lg:hidden">
                     <div className='m-4'>
@@ -21,9 +21,7 @@ const BurguerDetail = () => {
                     </div>
                 </div>
             </Link>
-
-            <div className="relative h-screen flex flex-col items-center justify-center lg:flex-row lg:items-start lg:justify-start lg:mt-[7rem] ">
-                {/* Imagen */}
+            <div className="relative h-screen flex flex-col items-center justify-center lg:flex-row lg:items-start lg:justify-start lg:pt-[8rem]">
                 <div className="w-full lg:w-1/2 flex flex-col items-center justify-end">
                     <img
                         id="preparationImg"
@@ -31,7 +29,8 @@ const BurguerDetail = () => {
                         src="/img/burgersTypes/cuartoxl.png"
                         alt="Hamburguesa"
                     />
-                    <button className="hidden text-white lg:block">ARMA TU COMBO</button>
+                    <button className="hidden text-white lg:block"><Demo /></button>
+
                 </div>
 
                 {/* Descripción */}
@@ -48,10 +47,9 @@ const BurguerDetail = () => {
                     </div>
                 </div>
             </div>
-
             {/* Botón fijo */}
-            <div className="fixed bottom-0 bg-black w-screen lg:hidden">
-                <button className="text-white w-screen p-4 md:p-4">ARMA TU COMBO</button>
+            <div className="fixed bottom-0 bg-black w-screen lg:hidden flex items-center justify-center">
+                <button className="text-white w-screen p-2 md:p-2 flex items-center justify-center"><Demo /></button>
             </div>
             <div className='hidden lg:block'>
                 <Footer />

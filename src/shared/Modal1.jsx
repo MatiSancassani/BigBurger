@@ -1,5 +1,6 @@
 import { For, HStack } from "@chakra-ui/react"
 import { Button } from "../components/ui/button"
+import { IoIosArrowForward } from "react-icons/io";
 import {
     DialogActionTrigger,
     DialogBody,
@@ -11,12 +12,8 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "../components/ui/dialog"
-import Modal1 from "./Modal1"
-import Modal2 from "./Modal2"
-import Modal3 from "./Modal3"
-// import Modal2 from "./Modal2"
 
-const Demo = () => {
+const Modal2 = () => {
     return (
         <HStack wrap="wrap" gap="4">
             <For each={["center"]}>
@@ -27,20 +24,28 @@ const Demo = () => {
                         motionPreset="slide-in-bottom"
                     >
                         <DialogTrigger asChild>
-                            <Button variant="outline">ARMA TU COMBO</Button>
+                            <div className="w-full cursor-pointer flex items-center justify-between gap-[1.5rem] p-[.5rem]">
+                                <div className="flex items-center justify-center gap-[1rem]">
+                                    <div>
+                                        <img className="w-[60px]" src="/img/burgersTypes/triple.png" alt="" />
+                                    </div>
+                                    <div>
+                                        <h3>Triple Bacon Grande</h3>
+                                        <p>$12000</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center justify-center text-[1.3rem]">
+                                    <IoIosArrowForward />
+                                </div>
+                            </div>
                         </DialogTrigger>
                         <DialogContent>
+                            <DialogBody className="mt-[2rem]">
 
-
-                            <DialogBody className="mt-[2rem] flex flex-col gap-[2rem] w-full">
-                                <h3 className="text-[1.3rem] font-bold">Elegir Combo</h3>
-                                <Modal1 />
-                                <Modal2 />
-                                <Modal3 />
                             </DialogBody>
                             <DialogFooter>
                                 <DialogActionTrigger asChild>
-                                    <Button variant="outline">Cancel</Button>
+                                    <Button variant="outline">Volver</Button>
                                 </DialogActionTrigger>
                             </DialogFooter>
                             <DialogCloseTrigger />
@@ -52,4 +57,4 @@ const Demo = () => {
     )
 }
 
-export default Demo
+export default Modal2

@@ -29,7 +29,9 @@ const BurguerDetail = () => {
                         src="/img/burgersTypes/cuartoxl.png"
                         alt="Hamburguesa"
                     />
-                    <button className="hidden text-white lg:block"><Demo /></button>
+                    <div className="hidden text-white lg:block">
+                        <Demo />
+                    </div>
 
                 </div>
 
@@ -49,7 +51,11 @@ const BurguerDetail = () => {
             </div>
             {/* Botón fijo */}
             <div className="fixed bottom-0 bg-black w-screen lg:hidden flex items-center justify-center">
-                <button className="text-white w-screen p-2 md:p-2 flex items-center justify-center"><Demo /></button>
+                {/* <button className="text-white w-screen p-2 md:p-2 flex items-center justify-center"> */}
+                <div className='className="text-white w-screen p-2 md:p-2 flex items-center justify-center'>
+                    <Demo />
+                </div>
+                {/* </button> */}
             </div>
             <div className='hidden lg:block'>
                 <Footer />

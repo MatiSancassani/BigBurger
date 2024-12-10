@@ -2,7 +2,6 @@ import { Link as ScrollLink } from "react-scroll"
 import { Link } from "react-router-dom"
 import { IoMdClose } from "react-icons/io";
 import { FaTiktok, FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
-import { useState } from "react";
 
 const NavBar = ({ isNavbarOpen, toggleMenu }) => {
 

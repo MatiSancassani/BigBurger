@@ -40,38 +40,47 @@ const Menu = () => {
                     </div>
                     <div className="flex items-center justify-evenly gap-[1rem] flex-wrap mb-[2rem]
                 lg:items-center lg:justify-start lg:gap-[1rem] lg:flex-wrap lg:mb-[2rem]">
-                        <CardBurger />
-                        <CardBurger />
+
+                        <CardBurger img="/img/burgersTypes/boomcheddar.png" title="Boom Cheddar" />
+                        <CardBurger img="/img/burgersTypes/cuartoxl.png" title="Cuarto XL" />
+                        <CardBurger img="/img/burgersTypes/triple.png" title="Cuarto XL" />
+                        <CardBurger img="/img/burgersTypes/doblehuevo.png" title="Dibu Doble Huevo" />
 
                     </div>
                     <div>
                         <h2 id="bbq" className="text-white">BBQ</h2>
                     </div>
-                    <div className="flex items-center justify-evenly gap-[1rem] flex-wrap mb-[2rem]">
-                        <CardBurger />
-                        <CardBurger />
-                        <CardBurger />
+                    <div className="flex items-center justify-evenly gap-[1rem] flex-wrap mb-[2rem]
+                lg:items-center lg:justify-start lg:gap-[1rem] lg:flex-wrap lg:mb-[2rem]">
+                        <CardBurger img="/img/burgersTypes/onion.png" title="Onion" />
+                        <CardBurger img="/img/burgersTypes/" title="" />
+                        <CardBurger img="/img/burgersTypes/" title="" />
                     </div>
                     <div>
                         <h2 id="bacon" className="text-white">BACON</h2>
                     </div>
-                    <div className="flex items-center justify-evenly gap-[1rem] flex-wrap mb-[2rem]">
-                        <CardBurger />
-                        <CardBurger />
+                    <div className="flex items-center justify-evenly gap-[1rem] flex-wrap mb-[2rem]
+                lg:items-center lg:justify-start lg:gap-[1rem] lg:flex-wrap lg:mb-[2rem]">
+                        <CardBurger img="/img/burgersTypes/tastybacon.png" title="Tasty Bacon" />
+                        <CardBurger img="/img/burgersTypes/cheesebacondoble.png" title="Bacon Doble" />
                     </div>
                     <div>
                         <h2 id="chicken" className="text-white">CHICKEN</h2>
                     </div>
-                    <div className="flex items-center justify-evenly gap-[1rem] flex-wrap mb-[2rem]">
-                        <CardBurger />
+                    <div className="flex items-center justify-evenly gap-[1rem] flex-wrap mb-[2rem]
+                lg:items-center lg:justify-start lg:gap-[1rem] lg:flex-wrap lg:mb-[2rem]">
+                        <CardBurger img="/img/burgersTypes/paltapollo.png" title="Pollo & Palta" />
+                        <CardBurger img="/img/burgersTypes/pollocrispy.png" title="Pollo Crispy" />
+                        <CardBurger img="/img/burgersTypes/polloxl.png" title="Pollo XL" />
                     </div>
                     <div>
                         <h2 id="vegan" className="text-white">VEGAN</h2>
                     </div>
-                    <div className="flex items-center justify-evenly gap-[1rem] flex-wrap mb-[2rem]">
-                        <CardBurger />
-                        <CardBurger />
-                        <CardBurger />
+                    <div className="flex items-center justify-evenly gap-[1rem] flex-wrap mb-[2rem]
+                lg:items-center lg:justify-start lg:gap-[1rem] lg:flex-wrap lg:mb-[2rem]">
+                        <CardBurger img="/img/burgersTypes/veggie.png" title="Veggie" />
+                        <CardBurger img="/img/burgersTypes/veggiecheese.png" title="Veggie Cheese" />
+                        <CardBurger img="/img/burgersTypes/Palta.png" title="Palta" />
                     </div>
                 </div>
             </div>

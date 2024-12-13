@@ -20,7 +20,9 @@ const NavBar = ({ isNavbarOpen, toggleMenu }) => {
                 </button>
 
                 <div>
-                    <img src="/img/logo.png" alt="" className="w-[8rem] cursor-pointer" />
+                    <Link to={'/'}>
+                        <img src="/img/logo.png" alt="" className="w-[8rem] cursor-pointer" />
+                    </Link>
                 </div>
             </div>
 
@@ -37,9 +39,9 @@ const NavBar = ({ isNavbarOpen, toggleMenu }) => {
                     <ul className="flex flex-col items-start justify-between gap-[1rem] mx-[.5rem]">
 
                         <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300">
-                            <ScrollLink to={'header'} spy={true} smooth={true} offset={-125} duration={500}>
+                            <Link to={'/'}>
                                 HOME
-                            </ScrollLink>
+                            </Link>
                         </li>
                         <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300" >
                             <ScrollLink to={'time'} spy={true} smooth={true} offset={-50} duration={500}>

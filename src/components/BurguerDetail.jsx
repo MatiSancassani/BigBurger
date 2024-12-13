@@ -1,16 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Accordion from '../shared/Accordion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { IoIosArrowBack } from "react-icons/io";
 import Footer from '../shared/Footer';
 import Demo from '../shared/Modal';
+import NavBar from '../shared/NavBar';
 const BurguerDetail = () => {
+    const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsNavbarOpen(!isNavbarOpen);
+    };
     useEffect(() => {
         window.scrollTo(0, 0); // Resetea el scroll al cargar la página
     }, []);
     return (
         <div className=''>
+            <div className='hidden lg:block'>
+                <NavBar isNavbarOpen={isNavbarOpen} toggleMenu={toggleMenu} />
+            </div>
             <Link to="/menu">
                 <div className="fixed top-0 z-20 bg-black w-screen flex items-center justify-start text-[1rem] text-white lg:hidden">
                     <div className='m-4'>

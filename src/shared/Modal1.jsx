@@ -1,19 +1,31 @@
 import { For, HStack } from "@chakra-ui/react"
-import { Button } from "../components/ui/button"
 import { IoIosArrowForward } from "react-icons/io";
 import {
-    DialogActionTrigger,
     DialogBody,
     DialogCloseTrigger,
     DialogContent,
-    DialogFooter,
-    DialogHeader,
     DialogRoot,
     DialogTitle,
     DialogTrigger,
 } from "../components/ui/dialog"
+import { useState } from "react";
+import handleButtonClick from "../shared/Alert";
 
 const Modal2 = () => {
+    const [count, setCount] = useState(1);
+
+    const handleSuma = () => {
+        setCount(count + 1);
+    }
+
+    const handleResta = () => {
+        if (count > 1) {
+            setCount(count - 1);
+        }
+    }
+
+    const precio = 12000
+
     return (
         <HStack wrap="wrap" gap="4">
             <For each={["center"]}>
@@ -39,15 +51,127 @@ const Modal2 = () => {
                                 </div>
                             </div>
                         </DialogTrigger>
-                        <DialogContent>
-                            <DialogBody className="mt-[2rem]">
+                        <DialogContent className="lg:w-[80vw] lg:max-w-[1000px] lg:h-auto lg:max-h-[80vh] h-screen">
+                            <DialogBody className="mt-[3rem]">
 
+                                <div className="flex items-center justify-center gap-[3rem]">
+
+                                    <div className="hidden lg:block">
+                                        <img className="w-[50rem]" src="/img/burgersTypes/triple.png" alt="" />
+                                    </div>
+
+                                    <div className="overflow-auto max-h-[600px] scrollbar-hide">
+                                        <div className="mx-[1rem]">
+                                            <div className="flex flex-col gap-[1rem]">
+                                                <h2 className="text-[20px]">Combo Grande Triple Bacon</h2>
+                                                <p className="text-[14px]">$12000</p>
+                                                <p className="text-[14px]">Medallón a base de plantas a la parrilla, pan, mayonesa, ketchup, cebolla, tomate, pepinos y lechuga. Acompañado con papas king, gaseosa king y juguete de la licencia que esté en stock o disponible, imagen de carácter ilustrativa.</p>
+                                            </div>
+                                            <div className="flex items-center justify-between py-[2rem]">
+                                                <div className="flex items-center justify-center">
+                                                    <p>Cantidad: {count}</p>
+                                                </div>
+                                                <div className="flex gap-[1rem]">
+                                                    <button onClick={handleResta}>-</button>
+                                                    <button onClick={handleSuma}>+</button>
+                                                </div>
+                                            </div>
+                                            <p>Adiccionales</p>
+                                            <div className="flex flex-col my-[1rem] gap-[.3rem]">
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center justify-start gap-[1rem]">
+                                                        {/* <CheckBox /> */}
+                                                        <input type="checkbox" />
+                                                        <div>
+                                                            <p>Papas Fritas con Cheddar</p>
+                                                            <small>+ $ 2,500.00</small>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <img className="w-[60px]" src="/img/add/papascheddar.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center justify-start gap-[1rem]">
+                                                        {/* <CheckBox /> */}
+                                                        <input type="checkbox" />
+                                                        <div>
+                                                            <p>Papas Fritas Cheddar con Bacon</p>
+                                                            <small>+ $ 2,800.00</small>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <img className="w-[60px]" src="/img/add/papascheddarbacon.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center justify-start gap-[1rem]">
+                                                        <input type="checkbox" />
+                                                        <div>
+                                                            <p>Aros de cebolla con Cheddar</p>
+                                                            <small>+ $ 2,000.00</small>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <img className="w-[60px]" src="/img/add/aroscebolla.png" alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p>Bebida</p>
+                                            <div className="flex flex-col my-[1rem] gap-[.3rem]">
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center justify-start gap-[1rem]">
+                                                        {/* <CheckBox /> */}
+                                                        <input type="checkbox" />
+                                                        <div>
+                                                            <p>CocaCola 500ml</p>
+                                                            <small>+ $ 2,000.00</small>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <img className="w-[60px]" src="/img/add/cocacola.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center justify-start gap-[1rem]">
+                                                        {/* <CheckBox /> */}
+                                                        <input type="checkbox" />
+                                                        <div>
+                                                            <p>Fanta 500ml</p>
+                                                            <small>+ $ 2,000.00</small>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <img className="w-[60px]" src="/img/add/fanta.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center justify-start gap-[1rem]">
+                                                        {/* <CheckBox /> */}
+                                                        <input type="checkbox" />
+                                                        <div>
+                                                            <p>Pepsi 500ml</p>
+                                                            <small>+ $ 1,800.00</small>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <img className="w-[60px]" src="/img/add/pepsi.png" alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="sticky bottom-0 py-[12px] px-[24px] w-full rounded-[34px] bg-black text-white text-[20px]">
+
+                                            <button className="flex items-center justify-between w-full"
+                                                onClick={() => handleButtonClick({ precio, count })}>
+                                                <p>Agregar</p>
+                                                <p>${precio * count}</p>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </DialogBody>
-                            <DialogFooter>
-                                <DialogActionTrigger asChild>
-                                    <Button variant="outline">Volver</Button>
-                                </DialogActionTrigger>
-                            </DialogFooter>
                             <DialogCloseTrigger />
                         </DialogContent>
                     </DialogRoot>

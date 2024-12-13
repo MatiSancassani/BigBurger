@@ -24,33 +24,36 @@ const NavBar = ({ isNavbarOpen, toggleMenu }) => {
                 </div>
             </div>
 
-            <div className={`fixed top-0 z-30 text-white bg-black rounded-r-[2rem] h-screen w-[100%] overflow-hidden transition-all duration-300 lg:w-[20%] ${isNavbarOpen ? "left-0" : "-left-full"
+            <div className={`flex flex-col justify-between fixed top-0 z-30 text-white bg-black rounded-r-[2rem] h-screen w-[100%] overflow-hidden transition-all duration-300 lg:w-[20%] ${isNavbarOpen ? "left-0" : "-left-full"
                 }`}>
-                <div className="flex items-center justify-end mx-[1rem]">
-                    <button onClick={toggleMenu}>
-                        <div className="mt-[2rem] border-2 rounded-[100%] p-[.5rem] cursor-pointer hover:bg-[#333]">
-                            <IoMdClose />
-                        </div>
-                    </button>
-                </div>
-                <ul className="flex flex-col items-start justify-between gap-[1rem] mx-[.5rem]">
+                <div>
+                    <div className="flex items-center justify-end mx-[1rem]">
+                        <button onClick={toggleMenu}>
+                            <div className="mt-[2rem] border-2 rounded-[100%] p-[.5rem] cursor-pointer hover:bg-[#333]">
+                                <IoMdClose />
+                            </div>
+                        </button>
+                    </div>
+                    <ul className="flex flex-col items-start justify-between gap-[1rem] mx-[.5rem]">
 
-                    <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300">
-                        <ScrollLink to={'header'} spy={true} smooth={true} offset={-125} duration={500}>
-                            HOME
-                        </ScrollLink>
-                    </li>
-                    <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300" >
-                        <ScrollLink to={'time'} spy={true} smooth={true} offset={-50} duration={500}>
-                            TIME
-                        </ScrollLink>
-                    </li>
-                    <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300">
-                        <Link to={'/burgers'}>BURGERS</Link>
-                    </li>
-                    <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300"><Link to={'/'}>CONTACT US</Link></li>
-                </ul>
-                <div className="bottom-0 absolute w-full p-[.5rem] mb-[2rem]">
+                        <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300">
+                            <ScrollLink to={'header'} spy={true} smooth={true} offset={-125} duration={500}>
+                                HOME
+                            </ScrollLink>
+                        </li>
+                        <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300" >
+                            <ScrollLink to={'time'} spy={true} smooth={true} offset={-50} duration={500}>
+                                TIME
+                            </ScrollLink>
+                        </li>
+                        <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300">
+                            <Link to={'/burgers'}>BURGERS</Link>
+                        </li>
+                        <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300"><Link to={'/'}>CONTACT US</Link></li>
+                    </ul>
+                </div>
+
+                <div className="w-full p-[.5rem] mb-[2rem]">
                     <ul className="flex items-center justify-around">
                         <li className="h-[3rem] w-[3rem] flex items-center justify-center rounded-[50%] cursor-pointer bg-black hover:bg-[#333] hover:text-[1.3rem] transition-[1s]">
                             <FaFacebookF />

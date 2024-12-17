@@ -44,14 +44,15 @@ const NavBar = ({ isNavbarOpen, toggleMenu }) => {
                             </Link>
                         </li>
                         <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300" >
-                            <ScrollLink to={'time'} spy={true} smooth={true} offset={-50} duration={500}>
+                            <Link to={'/'}>
                                 TIME
-                            </ScrollLink>
+                            </Link>
                         </li>
                         <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300">
-                            <Link to={'/burgers'}>BURGERS</Link>
+                            <Link to={'/'}>BURGERS</Link>
                         </li>
                         <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300"><Link to={'/'}>CONTACT US</Link></li>
+                        <li className="cursor-pointer hover:bg-[#0a0a0a] w-full p-[.5rem] hover:translate-x-[.5rem] transition-transform duration-300"><Link to={'/login'}>LOGIN</Link></li>
                     </ul>
                 </div>
 

@@ -6,12 +6,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import Footer from '../shared/Footer';
 import Demo from '../shared/Modal';
 import NavBar from '../shared/NavBar';
-const BurguerDetail = () => {
-    const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsNavbarOpen(!isNavbarOpen);
-    };
+const BurguerDetail = ({ isNavbarOpen, toggleMenu }) => {
     useEffect(() => {
         window.scrollTo(0, 0); // Resetea el scroll al cargar la página
     }, []);

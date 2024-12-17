@@ -1,9 +1,12 @@
 import Home from "./components/Home"
-import BurgersMenu from "./components/BurgersMenu"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import BurguerDetail from "./components/BurguerDetail"
 // import Footer from "./shared/Footer"
 import Menu from "./components/Menu"
+import Login from "./components/login/Login"
+import LoginEmail from "./components/login/LoginEmail"
+import SignIn from "./components/login/SignIn"
+import SignUp from "./components/login/SignUp"
 function App() {
 
   return (
@@ -11,8 +14,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/burgers" element={<BurgersMenu />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/burger/:id" element={<BurguerDetail />} />
+        <Route path="/login-email" element={<LoginEmail />} />
+        <Route path="/signIn" element={<SignIn />} />
+        <Route path="/signUp" element={<SignUp />} />
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>

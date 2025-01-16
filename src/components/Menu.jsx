@@ -12,7 +12,7 @@ const Menu = () => {
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
     const getProduct = async () => {
-        const response = await fetch("https://bigburgerbackend.onrender.com/api/products/api/products");
+        const response = await fetch("https://bigburgerbackend.onrender.com/api/products");
         const data = await response.json();
         return data.data
 

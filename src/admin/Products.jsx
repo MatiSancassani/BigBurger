@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
 
 const Products = () => {
     const getProduct = async () => {
-        const response = await fetch("https://bigburgerbackend.onrender.com/api/products/api/products");
+        const response = await fetch("https://bigburgerbackend.onrender.com/api/products");
         const data = await response.json();
         return data.data
     }
@@ -33,7 +33,7 @@ const Products = () => {
         // Crear un FormData y agregar los campos del formulario
         const formData = new FormData(e.target);
 
-        fetch("https://bigburgerbackend.onrender.com/api/products/api/products", {
+        fetch("https://bigburgerbackend.onrender.com/api/products", {
             method: "POST",
             body: formData,
         })

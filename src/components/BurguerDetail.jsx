@@ -14,7 +14,7 @@ const BurguerDetail = ({ isNavbarOpen, toggleMenu }) => {
     const { id } = useParams();
     const [productos, setProductos] = useState({});
     const getProductById = async () => {
-        const response = await fetch(`https://bigburgerbackend.onrender.com/api/products/api/products/${id}`);
+        const response = await fetch(`https://bigburgerbackend.onrender.com/api/products/${id}`);
         const data = await response.json();
         return data.data
     }

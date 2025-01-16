@@ -40,7 +40,7 @@ const BurguerDetail = ({ isNavbarOpen, toggleMenu }) => {
             </Link>
             <div className="relative h-screen flex flex-col items-center justify-center lg:flex-row lg:items-start lg:justify-start lg:pt-[8rem]">
                 <div className="w-full lg:w-1/2 flex flex-col items-center justify-end">
-                    <img src={`https://bigburgerbackend.onrender.com/api/products${thumbnail}`} alt={title} />
+                    <img src={`https://bigburgerbackend.onrender.com${thumbnail}`} alt={title} />
                     <div className="hidden text-white lg:block">
                         <Demo />
                     </div>

@@ -5,7 +5,7 @@ const Data = ({ title, description, thumbnail, price }) => {
         <div>
             <h2>{title}</h2>
             <p>{description}</p>
-            <img src={`https://bigburgerbackend.onrender.com/api/products${thumbnail}`} alt="" />
+            <img src={`https://bigburgerbackend.onrender.com${thumbnail}`} alt="" />
             <p>{price}</p>
         </div>
     )

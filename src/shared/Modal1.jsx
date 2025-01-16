@@ -53,7 +53,7 @@ const Modal2 = () => {
                             <div className="w-full cursor-pointer flex items-center justify-between gap-[1.5rem] p-[.5rem]">
                                 <div className="flex items-center justify-center gap-[1rem]">
                                     <div>
-                                        <img className="w-[60px]" src={`https://bigburgerbackend.onrender.com/api/products${thumbnail}`} alt={title} />
+                                        <img className="w-[60px]" src={`https://bigburgerbackend.onrender.com${thumbnail}`} alt={title} />
                                     </div>
                                     <div>
                                         <h3>Triple Bacon Grande</h3>
@@ -71,7 +71,7 @@ const Modal2 = () => {
                                 <div className="flex items-center justify-center gap-[3rem]">
 
                                     <div className="hidden lg:block">
-                                        <img className="w-[50rem]" src={`https://bigburgerbackend.onrender.com/api/products${thumbnail}`} alt={title} />
+                                        <img className="w-[50rem]" src={`https://bigburgerbackend.onrender.com${thumbnail}`} alt={title} />
                                     </div>
 
                                     <div className="overflow-auto max-h-[600px] scrollbar-hide">

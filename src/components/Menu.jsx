@@ -43,7 +43,7 @@ const Menu = () => {
                         </button>
                     </div>
                     {/* toggle */}
-                    <div className={`absolute p-8 flex flex-col justify-between z-30 text-white bg-black min-h-screen w-screen lg:w-80 overflow-y-scroll scrollbar-hide transition-all duration-300 ${isNavbarOpen ? "left-0" : "-left-full"}`}>
+                    <div className={`fixed top-0 p-8 flex flex-col justify-between z-30 text-white bg-black min-h-screen w-screen lg:w-80 overflow-y-scroll scrollbar-hide transition-all duration-300 ${isNavbarOpen ? "left-0" : "-left-full"}`}>
                         <div className="">
                             <div className="flex items-center justify-between p-[1rem] mb-10">
                                 <div>

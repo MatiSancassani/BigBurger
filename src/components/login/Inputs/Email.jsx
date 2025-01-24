@@ -10,7 +10,7 @@ const Email = () => {
                         name="email"
                         type="email"
                         placeholder=""
-                        className="border-b border-gray-300 py-1 focus:border-b-2 focus:border-[#e99825] transition-colors focus:outline-none peer bg-inherit"
+                        className="border-b w-[20rem] border-gray-300 py-1 focus:border-b-2 focus:border-[#e99825] transition-colors focus:outline-none peer bg-inherit"
                     />
                     <label
                         for="email"

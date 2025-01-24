@@ -27,9 +27,10 @@ const Menu = () => {
     };
     return (
         <>
-            <div className="bg-black text-white sticky top-0 flex items-center justify-around mb-[2rem] p-[1rem] z-10">
-                <div className="w-full lg:w-auto relative flex items-center justify-center">
-                    <div className="absolute left-[-43rem] top-[-.1rem]">
+            <div className="bg-black text-white sticky top-0 flex items-center justify-between mb-[2rem] h-[90px] z-10">
+                <div className="lg:w-full flex items-center justify-between lg:px-[1.5rem]">
+                    {/* BOTON HAMBURGER */}
+                    <div className="hidden lg:block">
                         <button onClick={toggleMenu}>
                             <div className="bg-white p-[.5rem] rounded-[30%]">
                                 <div className="w-[1.5rem] h-[1.5rem] text-white">
@@ -41,7 +42,8 @@ const Menu = () => {
                             </div>
                         </button>
                     </div>
-                    <div className={`p-8 flex flex-col justify-between fixed top-0 z-30 text-white bg-black min-h-screen w-screen lg:w-80 overflow-y-scroll scrollbar-hide transition-all duration-300 ${isNavbarOpen ? "left-0" : "-left-full"}`}>
+                    {/* toggle */}
+                    <div className={`absolute p-8 flex flex-col justify-between z-30 text-white bg-black min-h-screen w-screen lg:w-80 overflow-y-scroll scrollbar-hide transition-all duration-300 ${isNavbarOpen ? "left-0" : "-left-full"}`}>
                         <div className="">
                             <div className="flex items-center justify-between p-[1rem] mb-10">
                                 <div>
@@ -60,12 +62,7 @@ const Menu = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
-                                        Time
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Burgers</Link>
+                                    <Link to={'/menu'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Burgers</Link>
                                 </li>
                                 <li><Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Contact</Link></li>
                             </ul>
@@ -89,27 +86,35 @@ const Menu = () => {
                         </div>
 
                     </div>
-                    <ul className="text-[15px] flex items-center justify-start overflow-x-auto whitespace-nowrap scrollbar-hide lg:justify-center">
-                        <li className="lg:hidden pb-[10px] px-[5px]"><Link to="/"><IoIosArrowBack /></Link></li>
-                        <ScrollLink to="classics" spy={true} smooth={true} offset={-80} duration={500}>
-                            <li className="pb-[10px] px-[20px] cursor-pointer border-b-[3px] border-transparent hover:border-white">CLASSICS</li>
-                        </ScrollLink>
-                        <ScrollLink to="bbq" spy={true} smooth={true} offset={-80} duration={500}>
-                            <li className="pb-[10px] px-[20px] cursor-pointer border-b-[3px] border-transparent hover:border-white">BBQ</li>
-                        </ScrollLink>
-                        <ScrollLink to="bacon" spy={true} smooth={true} offset={-80} duration={500}>
-                            <li className="pb-[10px] px-[20px] cursor-pointer border-b-[3px] border-transparent hover:border-white">BACON</li>
-                        </ScrollLink>
-                        <ScrollLink to="chicken" spy={true} smooth={true} offset={-80} duration={500}>
-                            <li className="pb-[10px] px-[20px] cursor-pointer border-b-[3px] border-transparent hover:border-white">CHICKEN</li>
-                        </ScrollLink>
-                        <ScrollLink to="vegan" spy={true} smooth={true} offset={-80} duration={500}>
-                            <li className="pb-[10px] px-[20px] cursor-pointer border-b-[3px] border-transparent hover:border-white">VEGAN</li>
-                        </ScrollLink>
-
-                    </ul>
+                    {/* listas */}
+                    <div className="overflow-x-auto whitespace-nowrap scrollbar-hide w-screen">
+                        <ul className="text-[15px] px-[.5rem] flex items-center justify-between lg:justify-center">
+                            <li className="lg:hidden px-[5px]"><Link to="/"><IoIosArrowBack /></Link></li>
+                            <ScrollLink to="classics" spy={true} smooth={true} offset={-100} duration={500}>
+                                <li className="px-[20px] cursor-pointer border-b-[3px] border-transparent hover:border-white">CLASSICS</li>
+                            </ScrollLink>
+                            <ScrollLink to="bbq" spy={true} smooth={true} offset={-100} duration={500}>
+                                <li className="px-[20px] cursor-pointer border-b-[3px] border-transparent hover:border-white">BBQ</li>
+                            </ScrollLink>
+                            <ScrollLink to="bacon" spy={true} smooth={true} offset={-100} duration={500}>
+                                <li className="px-[20px] cursor-pointer border-b-[3px] border-transparent hover:border-white">BACON</li>
+                            </ScrollLink>
+                            <ScrollLink to="chicken" spy={true} smooth={true} offset={-100} duration={500}>
+                                <li className="px-[20px] cursor-pointer border-b-[3px] border-transparent hover:border-white">CHICKEN</li>
+                            </ScrollLink>
+                            <ScrollLink to="vegan" spy={true} smooth={true} offset={-100} duration={500}>
+                                <li className="px-[20px] cursor-pointer border-b-[3px] border-transparent hover:border-white">VEGAN</li>
+                            </ScrollLink>
+                        </ul>
+                    </div>
+                    <div className="hidden lg:block">
+                        <Link to={'/'}>
+                            <img src="/img/logo.png" alt="" className="w-[8rem] cursor-pointer" />
+                        </Link>
+                    </div>
                 </div>
             </div>
+
             <div className="flex flex-col items-center justify-around " >
                 <div className="mx-[15rem]">
                     <div>

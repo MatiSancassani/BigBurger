@@ -19,7 +19,6 @@ const Home = () => {
             <div id='home'>
                 <Header isNavbarOpen={isNavbarOpen} />
             </div>
-            {/* <Footer /> */}
         </>
 
     )

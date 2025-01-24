@@ -6,8 +6,8 @@ import { IoSettings } from "react-icons/io5";
 const NavBar = ({ isNavbarOpen, toggleMenu }) => {
 
     return (
-        <div className="fixed top-0 z-30">
-            <div className="z-20 flex items-center justify-between py-[1rem] px-[2rem] w-[100vw]">
+        <div className="z-30">
+            <div className="fixed top-0 z-20 flex items-center justify-between py-[1rem] px-[2rem] w-[100vw]">
                 <button onClick={toggleMenu}>
                     <div className="bg-white p-[.5rem] rounded-[30%]">
                         <div className="w-[1.5rem] h-[1.5rem] text-white">
@@ -26,7 +26,8 @@ const NavBar = ({ isNavbarOpen, toggleMenu }) => {
                 </div>
             </div>
 
-            <div className={`p-8 flex flex-col justify-between fixed top-0 z-30 text-white bg-black min-h-screen w-screen lg:w-80 overflow-y-scroll scrollbar-hide transition-all duration-300 ${isNavbarOpen ? "left-0" : "-left-full"}`}>
+            <div className={`absolute p-8 flex flex-col justify-between z-30 text-white bg-black min-h-screen w-screen lg:w-80 overflow-y-scroll scrollbar-hide transition-all duration-300 ${isNavbarOpen ? "left-0" : "-left-full"}`}>
+
                 <div className="">
                     <div className="flex items-center justify-between p-[1rem] mb-10">
                         <div>
@@ -45,12 +46,7 @@ const NavBar = ({ isNavbarOpen, toggleMenu }) => {
                             </Link>
                         </li>
                         <li>
-                            <Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
-                                Time
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Burgers</Link>
+                            <Link to={'/menu'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Burgers</Link>
                         </li>
                         <li><Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Contact</Link></li>
                     </ul>

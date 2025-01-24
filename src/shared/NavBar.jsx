@@ -26,48 +26,52 @@ const NavBar = ({ isNavbarOpen, toggleMenu }) => {
                 </div>
             </div>
 
-            <div className={`absolute p-8 flex flex-col justify-between z-30 text-white bg-black min-h-screen w-screen lg:w-80 overflow-y-scroll scrollbar-hide transition-all duration-300 ${isNavbarOpen ? "left-0" : "-left-full"}`}>
+            <div className={`absolute h-[100vh] p-8 z-30 text-white bg-black w-screen lg:w-80 overflow-y-scroll scrollbar-hide transition-all duration-300 ${isNavbarOpen ? "left-0" : "-left-full"}`}>
 
-                <div className="">
-                    <div className="flex items-center justify-between p-[1rem] mb-10">
-                        <div>
-                            <h2 className="text-gray-300 font-bold text-2xl tracking-[2px] uppercase">BigBurger</h2>
-                        </div>
-                        <button onClick={toggleMenu}>
-                            <div className="border-transparent border-gray-300 rounded-[100%] cursor-pointer hover:bg-[#333] text-[1.5rem]">
-                                <IoMdClose />
+                <div className="flex flex-col justify-between h-full">
+
+                    <div className="">
+                        <div className="flex items-center justify-between p-[1rem] mb-10">
+                            <div>
+                                <h2 className="text-gray-300 font-bold text-2xl tracking-[2px] uppercase">BigBurger</h2>
                             </div>
-                        </button>
+                            <button onClick={toggleMenu}>
+                                <div className="border-transparent border-gray-300 rounded-[100%] cursor-pointer hover:bg-[#333] text-[1.5rem]">
+                                    <IoMdClose />
+                                </div>
+                            </button>
+                        </div>
+                        <ul className="">
+                            <li>
+                                <Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
+                                    Home
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={'/menu'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Burgers</Link>
+                            </li>
+                            <li><Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Contact</Link></li>
+                        </ul>
                     </div>
-                    <ul className="">
-                        <li>
-                            <Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
-                                Home
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={'/menu'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Burgers</Link>
-                        </li>
-                        <li><Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Contact</Link></li>
-                    </ul>
+
+                    <div className="">
+                        <div className="cursor-pointer flex items-center gap-4 text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
+                            <IoSettings />
+                            <p>Setting</p>
+                        </div>
+                        <div className="cursor-pointer flex items-center gap-4 text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
+                            <CiLogin />
+                            <Link to={'/login'}>Sign In</Link>
+                        </div>
+                        <div className="cursor-pointer flex items-center gap-4 text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
+                            <img className="w-4 h-4 object-cover rounded-full" src="/img/user.png" alt="" />
+                            <p>Invitado</p>
+                        </div>
+
+
+                    </div>
                 </div>
 
-                <div className="">
-                    <div className="cursor-pointer flex items-center gap-4 text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
-                        <IoSettings />
-                        <p>Setting</p>
-                    </div>
-                    <div className="cursor-pointer flex items-center gap-4 text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
-                        <CiLogin />
-                        <Link to={'/login'}>Sign In</Link>
-                    </div>
-                    <div className="cursor-pointer flex items-center gap-4 text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
-                        <img className="w-4 h-4 object-cover rounded-full" src="/img/user.png" alt="" />
-                        <p>Invitado</p>
-                    </div>
-
-
-                </div>
 
             </div>
         </div>

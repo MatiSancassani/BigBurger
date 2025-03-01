@@ -37,7 +37,7 @@ const Modal2 = () => {
     useEffect(() => {
         const fetchAdditional = async () => {
             try {
-                const response = await fetch(`http://localhost:8030/api/additionals`);
+                const response = await fetch(`https://bigburgerbackend.onrender.com/api/additionals`);
                 const data = await response.json();
                 setAdditionals(data.data);
             } catch (error) {

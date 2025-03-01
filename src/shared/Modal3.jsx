@@ -57,8 +57,7 @@ const Modal3 = () => {
                                         <img className="w-[60px]" src={`https://bigburgerbackend.onrender.com${thumbnail}`} alt={title} />
                                     </div>
                                     <div>
-                                        <h3>Triple Bacon Regular</h3>
-                                        <p>$10000</p>
+                                        <h3>{title} grande</h3>
                                     </div>
                                 </div>
                                 <div className="flex items-center justify-center text-[1.3rem]">
@@ -78,8 +77,8 @@ const Modal3 = () => {
                                     <div className="overflow-auto max-h-[600px] scrollbar-hide">
                                         <div className="mx-[1rem]">
                                             <div className="flex flex-col gap-[1rem]">
-                                                <h2 className="text-[20px]">Combo Grande Triple Bacon</h2>
-                                                <p className="text-[14px]">$12000</p>
+                                                <h2 className="text-[20px] font-bold">{title} grande </h2>
+                                                <p className="text-[14px]">$ {precio}</p>
                                                 <p className="text-[14px]">Medallón a base de plantas a la parrilla, pan, mayonesa, ketchup, cebolla, tomate, pepinos y lechuga. Acompañado con papas king, gaseosa king y juguete de la licencia que esté en stock o disponible, imagen de carácter ilustrativa.</p>
                                             </div>
                                             <div className="flex items-center justify-between py-[2rem]">

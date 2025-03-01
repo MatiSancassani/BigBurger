@@ -122,9 +122,9 @@ const BurguerDetail = () => {
                 {/* Descripción */}
                 <div className="w-full lg:w-[40%] px-4 mx-[10rem]">
                     <div className="text-white">
-                        <h2 className="my-2 text-start text-2xl font-bold md:mt-10 md:text-4xl">Hamburguesa con queso</h2>
+                        <h2 className="my-2 text-start text-2xl font-bold md:mt-10 md:text-4xl">Hamburguesa<br />{title}</h2>
                         <p className="my-4 text-sm md:text-base">
-                            El sabor de la carne 100% vacuna más deliciosa, acompañado del pan más esponjoso, kétchup, mostaza y cebolla triturada.
+                            {description}
                         </p>
                         <div className="hidden lg:block">
                             <h2 className="mb-4 text-lg font-bold md:text-3xl">Más Información</h2>

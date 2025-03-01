@@ -1,9 +1,9 @@
 import Swal from 'sweetalert2';
 
-const handleButtonClick = ({ count, precio }) => {
+const handleButtonClick = ({ totalPrice }) => {
     Swal.fire({
         title: 'Confirmación',
-        text: `¿Quieres agregar el producto por $${precio * count}?`,
+        text: `¿Quieres agregar el producto por $${totalPrice}?`,
         icon: 'question',
         showCancelButton: true,
         confirmButtonText: 'Sí, agregar',

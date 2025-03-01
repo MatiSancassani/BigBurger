@@ -67,84 +67,50 @@ const Products = () => {
 
     return (
         <>
-            <h1>Agrega nuevos productos</h1>
+            <div className='flex'>
+                <div className='p-[1rem] border-2 w-[20%]'>
+                    <form onSubmit={handleSubmit}>
+                        <h1 className='text-center'>Agregar producto</h1>
+                        <div className='w-full flex flex-col items-center gap-[2rem]'>
+                            <div id="src-file1" className='flex flex-col file-select mt-[2rem]'>
+                                <label htmlFor="thumbnail">Imagen</label>
+                                <input className='cursor-pointer' type="file" name="thumbnail" id="thumbnail" accept="image/*" required />
+                            </div>
+                            <h3>Obligatorio</h3>
+                            <div className='form'>
+                                <input className='input' placeholder='Titulo' type="text" name="title" id="title" required />
+                                <span className="input-border"></span>
+                            </div>
+                            <div className='form'>
+                                <input className='input' placeholder='Descripcion' type="text" name="description" id="description" required />
+                                <span className="input-border"></span>
+                            </div>
+                            <div className='form'>
+                                <input className='input' placeholder='Precio' type="number" name="price" id="price" required />
+                                <span className="input-border"></span>
+                            </div>
+                            <div className='form'>
+                                <input className='input' placeholder='Stock' type="number" name="stock" id="stock" required />
+                                <span className="input-border"></span>
+                            </div>
+                            <div>
+                                <select name="category" id="category" required>
+                                    <option value="">Elige una categoría</option>
+                                    <option value="Classic">Classic</option>
+                                    <option value="BBQ">BBQ</option>
+                                    <option value="Bacon">Bacon</option>
+                                    <option value="Chicken">Chicken</option>
+                                    <option value="Vegan">Vegan</option>
+                                </select>
+                            </div>
+                            <Button type="submit">Guardar</Button>
+                        </div>
+                    </form>
+                </div>
+                <div className='border-2 h-screen w-[80%] flex items-start justify-center'>
+                    <h2>Vista Previa</h2>
+                </div>
 
-            <div>
-                {productos.map((p) => {
-                    return (
-                        <Data key={p._id}
-                            title={p.title}
-                            description={p.description}
-                            thumbnail={p.thumbnail}
-                            price={p.price} />
-                    )
-                })
-                }
-            </div>
-
-            <div>
-                <HStack wrap="wrap" gap="4">
-                    <For each={["center"]}>
-                        {(placement) => (
-                            <DialogRoot
-                                key={placement}
-                                placement={placement}
-                                motionPreset="slide-in-bottom"
-                            >
-                                <DialogTrigger asChild>
-                                    <Button variant="outline" className="bg-green-600 rounded-[5px] p-[1rem]">Agregar nuevo producto</Button>
-                                </DialogTrigger>
-                                <DialogContent>
-                                    <DialogHeader>
-                                        <DialogTitle>Nuevo Producto</DialogTitle>
-                                    </DialogHeader>
-                                    <DialogBody>
-                                        <form onSubmit={handleSubmit}>
-                                            <div>
-                                                <label htmlFor="title">Título</label>
-                                                <input type="text" name="title" id="title" required />
-                                            </div>
-                                            <div>
-                                                <label htmlFor="description">Descripción</label>
-                                                <input type="text" name="description" id="description" required />
-                                            </div>
-                                            <div>
-                                                <label htmlFor="thumbnail">Imagen</label>
-                                                <input type="file" name="thumbnail" id="thumbnail" accept="image/*" required />
-                                            </div>
-                                            <div>
-                                                <label htmlFor="price">Precio</label>
-                                                <input type="number" name="price" id="price" required />
-                                            </div>
-                                            <div>
-                                                <label htmlFor="stock">Stock</label>
-                                                <input type="number" name="stock" id="stock" required />
-                                            </div>
-                                            <div>
-                                                <label htmlFor="category">Categoría</label>
-                                                <select name="category" id="category" required>
-                                                    <option value="">--Elige una categoría--</option>
-                                                    <option value="Classic">Classic</option>
-                                                    <option value="BBQ">BBQ</option>
-                                                    <option value="Bacon">Bacon</option>
-                                                    <option value="Chicken">Chicken</option>
-                                                    <option value="Vegan">Vegan</option>
-                                                </select>
-                                            </div>
-                                            <Button type="submit">Guardar</Button>
-                                        </form>
-                                    </DialogBody>
-                                    <DialogFooter>
-                                        <DialogActionTrigger asChild>
-                                            <Button variant="outline">Cancel</Button>
-                                        </DialogActionTrigger>
-                                    </DialogFooter>
-                                    <DialogCloseTrigger />
-                                </DialogContent>
-                            </DialogRoot>
-                        )}
-                    </For>
-                </HStack>
             </div>
         </>
     )

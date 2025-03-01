@@ -6,15 +6,12 @@ import {
     DialogCloseTrigger,
     DialogContent,
     DialogFooter,
-    DialogHeader,
     DialogRoot,
-    DialogTitle,
     DialogTrigger,
 } from "../components/ui/dialog"
 import Modal1 from "./Modal1"
 import Modal2 from "./Modal2"
 import Modal3 from "./Modal3"
-// import Modal2 from "./Modal2"
 
 const Demo = () => {
     return (

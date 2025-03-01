@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 const CardBurger = ({ title, description, thumbnail, price, category, id }) => {

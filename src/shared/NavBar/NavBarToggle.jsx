@@ -1,13 +1,40 @@
-import { Link } from "react-router-dom"
 import { IoMdClose } from "react-icons/io";
 import { CiLogin } from "react-icons/ci";
 import { IoSettings } from "react-icons/io5";
+import { Link } from "react-router-dom"
+import { useState } from "react";
+import { useEffect } from "react";
+const NavBarToggle = () => {
+    const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+    const [getUserById, setGetUserById] = useState(null);
 
-const NavBar = ({ isNavbarOpen, toggleMenu }) => {
+    const buttonSigOut = () => {
+        localStorage.removeItem('UserID');
+    }
 
+    const toggleMenu = () => {
+        setIsNavbarOpen(!isNavbarOpen);
+    };
+
+    const UserIDByLS = localStorage.getItem('UserID');
+    const fetchUserById = async () => {
+        try {
+            if (!UserIDByLS) return
+            const userById = await fetch(`http://localhost:8030/api/user/${UserIDByLS}`);
+            const data = await userById.json();
+            return data.data
+        }
+        catch (error) {
+            console.error('Error en el fetch(getUserById):', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchUserById().then((user) => setGetUserById(user));
+    }, [])
     return (
-        <div className="z-30">
-            <div className="fixed top-0 z-20 flex items-center justify-between py-[1rem] px-[2rem] w-[100vw]">
+        <>
+            <div className="">
                 <button onClick={toggleMenu}>
                     <div className="bg-white p-[.5rem] rounded-[30%]">
                         <div className="w-[1.5rem] h-[1.5rem] text-white">
@@ -18,15 +45,10 @@ const NavBar = ({ isNavbarOpen, toggleMenu }) => {
                         </div>
                     </div>
                 </button>
-
-                <div>
-                    <Link to={'/'}>
-                        <img src="/img/logo.png" alt="" className="w-[8rem] cursor-pointer" />
-                    </Link>
-                </div>
             </div>
 
-            <div className={`absolute h-[100vh] p-8 z-30 text-white bg-black w-screen lg:w-80 overflow-y-scroll scrollbar-hide transition-all duration-300 ${isNavbarOpen ? "left-0" : "-left-full"}`}>
+
+            <div className={`absolute h-[100vh] top-0 p-8 z-30 text-white bg-black w-screen lg:w-80 overflow-y-scroll scrollbar-hide transition-all duration-300 ${isNavbarOpen ? "left-0" : "-left-full"}`}>
 
                 <div className="flex flex-col justify-between h-full">
 
@@ -55,17 +77,20 @@ const NavBar = ({ isNavbarOpen, toggleMenu }) => {
                     </div>
 
                     <div className="">
-                        <div className="cursor-pointer flex items-center gap-4 text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
+
+                        {getUserById ? <div className="cursor-pointer flex items-center gap-4 text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
                             <IoSettings />
-                            <p>Setting</p>
-                        </div>
-                        <div className="cursor-pointer flex items-center gap-4 text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
-                            <CiLogin />
-                            <Link to={'/login'}>Sign In</Link>
+                            <Link to={'/setting'}>Setting</Link>
+                        </div> : null}
+                        <div className="cursor-pointer text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors" >
+                            <button onClick={buttonSigOut} className="flex items-center gap-4">
+                                <CiLogin />
+                                {getUserById ? <Link to={'/login'}>Sign out</Link> : <Link to={'/login'}>Sign In</Link>}
+                            </button>
                         </div>
                         <div className="cursor-pointer flex items-center gap-4 text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
                             <img className="w-4 h-4 object-cover rounded-full" src="/img/user.png" alt="" />
-                            <p>Invitado</p>
+                            <p>{getUserById ? `${getUserById.userName}` : 'Invitado'}</p>
                         </div>
 
 
@@ -74,8 +99,9 @@ const NavBar = ({ isNavbarOpen, toggleMenu }) => {
 
 
             </div>
-        </div>
+        </>
+
     )
 }
 
-export default NavBar
+export default NavBarToggle

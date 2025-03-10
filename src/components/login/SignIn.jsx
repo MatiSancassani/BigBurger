@@ -1,11 +1,44 @@
-import React from 'react'
-import Email from './Inputs/Email'
-import Password from './Inputs/Password'
+import { useState } from 'react';
 import { Link } from 'react-router-dom'
+import Home from '../Home';
 
 const SignIn = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [loginUser, setLoginUser] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const data = {
+                email: email,
+                password: password
+            }
+            const response = await fetch("http://localhost:8030/api/login", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            const dataJson = await response.json();
+
+            localStorage.setItem('UserID', dataJson.data._id)
+            if (dataJson.success) {
+                setLoginUser(true)
+            } else {
+                setErrorMessage(dataJson.message)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
     return (
-        <div className='h-screen flex items-center justify-center'>
+        <>{loginUser ? <Home /> : <div className='h-screen flex items-center justify-center'>
             <div className='hidden lg:h-screen lg:w-[50vw] lg:flex lg:items-center lg:justify-center'>
                 <div className=''>
                     <img src="img/login.png" alt="" />
@@ -20,19 +53,53 @@ const SignIn = () => {
                         <h3 className='mt-8 mb-[2rem] text-sm md:text-lg'>Ingresa tus datos</h3>
                     </div>
                     <div className='flex flex-col gap-[3rem]'>
-                        <div className=''>
-                            <Email />
-                        </div>
-                        <div className=''>
+                        <div className="flex items-center justify-center">
+                            {/* DIV EMAIL */}
                             <div>
-                                <Password />
+                                <form action="" className='flex flex-col gap-[2rem]'>
+                                    <div className='relative'>
+                                        <input
+                                            id="email"
+                                            name="email"
+                                            type="email"
+                                            onChange={() => { setEmail(event.target.value) }}
+                                            placeholder=""
+                                            className="border-b w-[20rem] border-gray-300 py-1 focus:border-b-2 focus:border-[#e99825] transition-colors focus:outline-none peer bg-inherit"
+                                        />
+                                        <label
+                                            htmlFor="email"
+                                            className="absolute -top-4 text-xs left-0 cursor-text peer-focus:text-xs peer-focus:-top-4 transition-all peer-placeholder-shown:top-1 peer-placeholder-shown:text-sm"
+                                        >
+                                            E-mail
+                                        </label>
+                                    </div>
+
+                                    <div className="relative">
+                                        <input
+                                            id="password"
+                                            name="password"
+                                            type="password"
+                                            onChange={() => { setPassword(event.target.value) }}
+                                            placeholder=""
+                                            className="border-b w-[20rem] border-gray-300 py-1 focus:border-b-2 focus:border-[#e99825] transition-colors focus:outline-none peer bg-inherit"
+                                        />
+                                        <label
+                                            htmlFor="password"
+                                            className="absolute -top-4 text-xs left-0 cursor-text peer-focus:text-xs peer-focus:-top-4 transition-all peer-placeholder-shown:top-1 peer-placeholder-shown:text-sm"
+                                        >
+                                            Password
+                                        </label>
+                                    </div>
+                                    {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                                    <div className=''>
+                                        {/* <Link to='/'> */}
+                                        <button type='submit' onClick={handleSubmit}>Continuar</button>
+                                        {/* </Link> */}
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                    </div>
-                    <div className='mt-[2rem]'>
-                        <Link to='/'>
-                            <button>Continuar</button>
-                        </Link>
+
                     </div>
                     <div>
                         <p className='mt-[2rem]'>¿No tienes una cuenta?
@@ -44,7 +111,8 @@ const SignIn = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>}</>
+
     )
 }
 

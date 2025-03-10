@@ -2,11 +2,12 @@
 import { Link } from "react-router-dom"
 
 
-const Header = ({ isNavbarOpen }) => {
+const Header = () => {
 
     return (
-        <div id="header" className={`h-screen flex items-center justify-center transition-colors duration-300 ${isNavbarOpen ? "filter brightness-50" : "filter brightness-100"
-            }`}>
+        // <div className="${isNavbarOpen ? "filter brightness-50" : "filter brightness-100"
+        //     }"></div>
+        <div id="header" className={`h-screen flex items-center justify-center transition-colors duration-300`}>
             <div className="flex flex-col items-center justify-center lg:mb-[10rem]">
                 <div className="text-white flex items-center justify-center">
                     <img className="slide-in-elliptic-bottom-fwd z-10 w-[17rem] h-[15rem] absolute

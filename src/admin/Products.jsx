@@ -29,6 +29,7 @@ const Products = () => {
 
         fetch("https://bigburgerbackend-1.onrender.com/api/products", {
             method: "POST",
+            headers: { 'Content-Type': 'application/json' },
             body: formData,
         })
             .then((res) => {

@@ -26,11 +26,13 @@ const Products = () => {
 
         // Crear un FormData y agregar los campos del formulario
         const formData = new FormData(e.target);
+        const formObject = Object.fromEntries(formData.entries());
+
 
         fetch("https://bigburgerbackend-1.onrender.com/api/products", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
-            body: formData,
+            body: JSON.stringify(formObject),
         })
             .then((res) => {
                 if (res.ok) {

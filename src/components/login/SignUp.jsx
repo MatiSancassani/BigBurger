@@ -51,7 +51,7 @@ const SignUp = () => {
                     <div className='text-white flex items-center flex-col justify-center lg:h-screen lg:w-[50vw] lg:items-start lg:pl-[3rem]'>
                         <div className='flex flex-col items-center justify-center'>
                             <div>
-                                <h1 className='mt-2 mb-8 max-w-xl text-[32px] font-bold md:text-5xl'>Ingresa tus datos para registrarte</h1>
+                                <h1 className='mt-2 mb-8 max-w-xl text-[32px] text-center font-bold md:text-5xl'>Ingresa tus datos para registrarte</h1>
                             </div>
                             <div className='flex flex-col gap-[3rem]'>
                                 <form action="" className='flex flex-col gap-[2rem]'>

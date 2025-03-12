@@ -6,14 +6,14 @@ import { Link } from "react-router-dom"
 const NavBarForMenuComp = () => {
     return (
         <div className="sticky top-0 z-30">
-            <div className="bg-black text-white flex items-center justify-between mb-[2rem] h-[90px] z-10">
+            <div className="bg-black text-white flex items-center justify-between mb-[2rem] z-10">
 
                 <div className="lg:w-full flex items-center justify-between lg:px-[1.5rem]">
                     <div className="hidden lg:block">
                         <NavBarToggle />
                     </div>
 
-                    <div className="overflow-x-auto whitespace-nowrap scrollbar-hide w-screen">
+                    <div className="overflow-x-auto whitespace-nowrap scrollbar-hide w-screen p-[1rem]">
                         <ul className="text-[15px] px-[.5rem] flex items-center justify-between lg:justify-center">
                             <li className="lg:hidden px-[5px]"><Link to="/"><IoIosArrowBack /></Link></li>
                             <ScrollLink to="classics" spy={true} smooth={true} offset={-100} duration={500}>

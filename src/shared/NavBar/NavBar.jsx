@@ -6,7 +6,7 @@ const NavBar = () => {
 
     return (
         <div className="">
-            <div className="fixed top-0 z-20 flex items-center justify-between py-[1rem] px-[2rem] w-[100vw]">
+            <div className="z-20 flex items-center justify-between py-[1rem] px-[2rem] w-[100vw]">
                 <div className="">
                     <NavBarToggle />
                 </div>

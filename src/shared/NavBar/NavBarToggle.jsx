@@ -4,6 +4,7 @@ import { IoSettings } from "react-icons/io5";
 import { Link } from "react-router-dom"
 import { useState } from "react";
 import { useEffect } from "react";
+import ButtonAdmin from "../../admin/ButtonAdmin";
 const NavBarToggle = () => {
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
     const [getUserById, setGetUserById] = useState(null);
@@ -20,7 +21,7 @@ const NavBarToggle = () => {
     const fetchUserById = async () => {
         try {
             if (!UserIDByLS) return
-            const userById = await fetch(`http://localhost:8030/api/user/${UserIDByLS}`);
+            const userById = await fetch(`https://bigburgerbackend.onrender.com/api/user/${UserIDByLS}`);
             const data = await userById.json();
             return data.data
         }
@@ -31,7 +32,7 @@ const NavBarToggle = () => {
 
     useEffect(() => {
         fetchUserById().then((user) => setGetUserById(user));
-    }, [])
+    },)
     return (
         <>
             <div className="">
@@ -73,6 +74,11 @@ const NavBarToggle = () => {
                                 <Link to={'/menu'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Burgers</Link>
                             </li>
                             <li><Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Contact</Link></li>
+                            <li>
+                                {getUserById?.rol == true ? <div className="">
+                                    <ButtonAdmin />
+                                </div> : null}
+                            </li>
                         </ul>
                     </div>
 

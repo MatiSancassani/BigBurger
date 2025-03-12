@@ -18,9 +18,8 @@ const SignIn = () => {
             }
             const response = await fetch("https://bigburgerbackend.onrender.com/api/login", {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include', // Necesario si `credentials: true` en backend
                 body: JSON.stringify(data)
             })
             const dataJson = await response.json();

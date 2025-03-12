@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Button } from "../components/ui/button"
 import Swal from 'sweetalert2';
 import NavBar from '../shared/NavBar/NavBar';
@@ -17,6 +17,8 @@ const Additionals = () => {
 
         fetch("https://bigburgerbackend.onrender.com/api/additionals", {
             method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include', // Necesario si `credentials: true` en backend
             body: formData,
         })
             .then((res) => {

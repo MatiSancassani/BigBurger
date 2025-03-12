@@ -19,7 +19,7 @@ const Modal3 = () => {
     const { id } = useParams();
     const [productos, setProductos] = useState({});
     const getProductById = async () => {
-        const response = await fetch(`https://bigburgerbackend.onrender.com/api/products/${id}`);
+        const response = await fetch(`https://bigburgerbackend-1.onrender.com/api/products/${id}`);
         const data = await response.json();
         return data.data
     }
@@ -54,7 +54,7 @@ const Modal3 = () => {
                             <div className="w-full cursor-pointer flex items-center justify-between gap-[1.5rem] p-[.5rem]">
                                 <div className="flex items-center justify-center gap-[1rem]">
                                     <div>
-                                        <img className="w-[60px]" src={`https://bigburgerbackend.onrender.com${thumbnail}`} alt={title} />
+                                        <img className="w-[60px]" src={`https://bigburgerbackend-1.onrender.com${thumbnail}`} alt={title} />
                                     </div>
                                     <div>
                                         <h3>{title} grande</h3>
@@ -71,7 +71,7 @@ const Modal3 = () => {
                                 <div className="flex items-center justify-center gap-[3rem]">
 
                                     <div className="hidden lg:block">
-                                        <img className="w-[50rem]" src={`https://bigburgerbackend.onrender.com${thumbnail}`} alt={title} />
+                                        <img className="w-[50rem]" src={`https://bigburgerbackend-1.onrender.com${thumbnail}`} alt={title} />
                                     </div>
 
                                     <div className="overflow-auto max-h-[600px] scrollbar-hide">

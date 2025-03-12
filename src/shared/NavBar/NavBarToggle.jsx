@@ -21,7 +21,7 @@ const NavBarToggle = () => {
     const fetchUserById = async () => {
         try {
             if (!UserIDByLS) return
-            const userById = await fetch(`https://bigburgerbackend.onrender.com/api/user/${UserIDByLS}`);
+            const userById = await fetch(`https://bigburgerbackend-1.onrender.com/api/user/${UserIDByLS}`);
             const data = await userById.json();
             return data.data
         }

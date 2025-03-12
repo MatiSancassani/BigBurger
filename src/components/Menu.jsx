@@ -7,7 +7,7 @@ const Menu = () => {
 
 
     const getProduct = async () => {
-        const response = await fetch("https://bigburgerbackend.onrender.com/api/products");
+        const response = await fetch("https://bigburgerbackend-1.onrender.com/api/products");
         const data = await response.json();
         return data.data
 

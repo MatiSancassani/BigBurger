@@ -12,7 +12,7 @@ const Products = () => {
     const [stock, setStock] = useState(null);
     const [category, setCategory] = useState(null);
     const getProduct = async () => {
-        const response = await fetch("https://bigburgerbackend.onrender.com/api/products");
+        const response = await fetch("https://bigburgerbackend-1.onrender.com/api/products");
         const data = await response.json();
         return data.data
     }
@@ -27,7 +27,7 @@ const Products = () => {
         // Crear un FormData y agregar los campos del formulario
         const formData = new FormData(e.target);
 
-        fetch("https://bigburgerbackend.onrender.com/api/products", {
+        fetch("https://bigburgerbackend-1.onrender.com/api/products", {
             method: "POST",
             body: formData,
         })

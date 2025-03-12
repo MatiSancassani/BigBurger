@@ -15,7 +15,7 @@ const Additionals = () => {
         // Crear un FormData y agregar los campos del formulario
         const formData = new FormData(e.target);
 
-        fetch("https://bigburgerbackend.onrender.com/api/additionals", {
+        fetch("https://bigburgerbackend-1.onrender.com/api/additionals", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include', // Necesario si `credentials: true` en backend

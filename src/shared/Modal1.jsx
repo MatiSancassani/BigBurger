@@ -24,7 +24,7 @@ const Modal2 = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await fetch(`https://bigburgerbackend.onrender.com/api/products/${id}`);
+                const response = await fetch(`https://bigburgerbackend-1.onrender.com/api/products/${id}`);
                 const data = await response.json();
                 setProductos(data.data);
             } catch (error) {
@@ -37,7 +37,7 @@ const Modal2 = () => {
     useEffect(() => {
         const fetchAdditional = async () => {
             try {
-                const response = await fetch(`https://bigburgerbackend.onrender.com/api/additionals`);
+                const response = await fetch(`https://bigburgerbackend-1.onrender.com/api/additionals`);
                 const data = await response.json();
                 setAdditionals(data.data);
             } catch (error) {
@@ -82,7 +82,7 @@ const Modal2 = () => {
                             <div className="w-full cursor-pointer flex items-center justify-between gap-[1.5rem] p-[.5rem]">
                                 <div className="flex items-center justify-center gap-[1rem]">
                                     <div>
-                                        <img className="w-[60px]" src={`https://bigburgerbackend.onrender.com${productThumbnail}`} alt={productTitle} />
+                                        <img className="w-[60px]" src={`https://bigburgerbackend-1.onrender.com${productThumbnail}`} alt={productTitle} />
                                     </div>
                                     <div>
                                         <h3>{productTitle} regular</h3>
@@ -99,7 +99,7 @@ const Modal2 = () => {
                                 <div className="flex items-center justify-center gap-[3rem]">
 
                                     <div className="hidden lg:block">
-                                        <img className="w-[50rem]" src={`https://bigburgerbackend.onrender.com${productThumbnail}`} alt={productTitle} />
+                                        <img className="w-[50rem]" src={`https://bigburgerbackend-1.onrender.com${productThumbnail}`} alt={productTitle} />
                                     </div>
 
                                     <div className="overflow-auto max-h-[600px] scrollbar-hide">

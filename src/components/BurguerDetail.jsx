@@ -11,7 +11,7 @@ const BurguerDetail = () => {
     const { id } = useParams();
     const [productos, setProductos] = useState({});
     const getProductById = async () => {
-        const response = await fetch(`https://bigburgerbackend.onrender.com/api/products/${id}`);
+        const response = await fetch(`https://bigburgerbackend-1.onrender.com/api/products/${id}`);
         const data = await response.json();
         return data.data
     }
@@ -43,7 +43,7 @@ const BurguerDetail = () => {
             <div className="flex flex-col items-center lg:flex-row lg:items-start lg:justify-start lg:h-screen lg:mt-[7rem]">
                 <div className="lg:w-1/2 flex">
                     <div className="text-white lg:block">
-                        <img src={`https://bigburgerbackend.onrender.com${thumbnail}`} alt={title} />
+                        <img src={`https://bigburgerbackend-1.onrender.com${thumbnail}`} alt={title} />
                         <div className='hidden lg:flex lg:items-center lg:justify-center'>
                             <Demo />
                         </div>

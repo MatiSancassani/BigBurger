@@ -18,21 +18,23 @@ const NavBarToggle = () => {
     };
 
     const UserIDByLS = localStorage.getItem('UserID');
-    const fetchUserById = async () => {
-        try {
-            if (!UserIDByLS) return
-            const userById = await fetch(`https://bigburgerbackend-1.onrender.com/api/user/${UserIDByLS}`);
-            const data = await userById.json();
-            return data.data
-        }
-        catch (error) {
-            console.error('Error en el fetch(getUserById):', error);
-        }
-    };
 
     useEffect(() => {
-        fetchUserById().then((user) => setGetUserById(user));
-    },)
+        if (!UserIDByLS) return; // Si no hay usuario, no llamar a la API
+
+        const fetchUserById = async () => {
+            try {
+                const response = await fetch(`https://bigburgerbackend-1.onrender.com/api/user/${UserIDByLS}`);
+                const data = await response.json();
+                setGetUserById(data.data);
+            } catch (error) {
+                console.error("Error en el fetch(getUserById):", error);
+            }
+        };
+
+        fetchUserById();
+    }, [UserIDByLS]); // 🔥 Se ejecuta solo cuando `UserIDByLS` cambia
+
     return (
         <>
             <div className="">

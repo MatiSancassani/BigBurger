@@ -14,12 +14,13 @@ const Additionals = () => {
 
         // Crear un FormData y agregar los campos del formulario
         const formData = new FormData(e.target);
+        const formObject = Object.fromEntries(formData.entries());
 
         fetch("https://bigburgerbackend-1.onrender.com/api/additionals", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include', // Necesario si `credentials: true` en backend
-            body: formData,
+            body: JSON.stringify(formObject),
         })
             .then((res) => {
                 if (res.ok) {

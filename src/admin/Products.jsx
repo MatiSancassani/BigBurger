@@ -11,15 +11,30 @@ const Products = () => {
     const [price, setPrice] = useState(null);
     const [stock, setStock] = useState(null);
     const [category, setCategory] = useState(null);
-    const getProduct = async () => {
-        const response = await fetch("https://bigburgerbackend-1.onrender.com/api/products");
-        const data = await response.json();
-        return data.data
-    }
     const [productos, setProductos] = useState([]);
+
+    const getProduct = async () => {
+        try {
+            const response = await fetch("http://localhost:8030/api/products");
+
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data.data; // 👈 Esto puede ser undefined si la API no devuelve `data`
+        } catch (error) {
+            console.error("Error en getProduct:", error);
+            return []; // 👈 Evita que `productos` sea undefined
+        }
+    };
+
     useEffect(() => {
-        getProduct().then((product) => setProductos(product))
-    }, [])
+        getProduct().then((product) => {
+            setProductos(product || []); // 👈 Asegura que sea un array
+            setProductos(product || []);
+        });
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();

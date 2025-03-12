@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Button } from "../components/ui/button"
 import Swal from 'sweetalert2';
-import NavBarToggle from '../shared/NavBar/NavBarToggle';
 import NavBar from '../shared/NavBar/NavBar';
 
 const Products = () => {
@@ -15,7 +14,7 @@ const Products = () => {
 
     const getProduct = async () => {
         try {
-            const response = await fetch("http://localhost:8030/api/products");
+            const response = await fetch("https://bigburgerbackend-1.onrender.com/api/products");
 
             if (!response.ok) {
                 throw new Error(`Error HTTP: ${response.status}`);
@@ -32,7 +31,6 @@ const Products = () => {
     useEffect(() => {
         getProduct().then((product) => {
             setProductos(product || []); // 👈 Asegura que sea un array
-            setProductos(product || []);
         });
     }, []);
 
@@ -40,14 +38,23 @@ const Products = () => {
         e.preventDefault();
 
         // Crear un FormData y agregar los campos del formulario
-        const formData = new FormData(e.target);
-        const formObject = Object.fromEntries(formData.entries());
+        // const formData = new FormData(e.target);
+        // const formObject = Object.fromEntries(formData.entries());
+
+        const addProduct = {
+            thumbnail: thumbnail,
+            description: description,
+            stock: stock,
+            title: title,
+            price: price,
+            category: category
+        }
 
 
         fetch("https://bigburgerbackend-1.onrender.com/api/products", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formObject),
+            body: JSON.stringify(addProduct),
         })
             .then((res) => {
                 if (res.ok) {

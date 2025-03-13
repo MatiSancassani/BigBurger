@@ -131,7 +131,7 @@ const BurgersModal = () => {
                                             </div>
                                             <div className="flex flex-col my-[1rem] gap-[1rem] p-[.5rem]">
                                                 {additionals.map((additional) => {
-                                                    if (additional.category === 'additional') {
+                                                    if (additional.category === 'agregados') {
                                                         return (
                                                             <div key={additional._id} className="flex items-center justify-between">
                                                                 <div className="flex items-center justify-start gap-[1rem]">
@@ -164,7 +164,7 @@ const BurgersModal = () => {
                                             </div>
                                             <div className="flex flex-col my-[1rem] gap-[1rem] p-[.5rem]">
                                                 {additionals.map((additional) => {
-                                                    if (additional.category === 'drink') {
+                                                    if (additional.category === 'bebidas') {
                                                         return (
                                                             <div key={additional._id} className="flex items-center justify-between">
                                                                 <div className="flex items-center justify-start gap-[1rem]">

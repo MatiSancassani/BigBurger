@@ -4,8 +4,6 @@ import { useEffect } from "react"
 import NavBarForMenuComp from "../shared/NavBar/NavBarForMenuComp"
 
 const Menu = () => {
-
-
     const getProduct = async () => {
         const response = await fetch("https://bigburgerbackend-1.onrender.com/api/products");
         const data = await response.json();

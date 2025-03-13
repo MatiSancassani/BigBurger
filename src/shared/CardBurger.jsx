@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
+import PropTypes from "prop-types";
 
-const CardBurger = ({ title, description, thumbnail, price, category, id }) => {
+const CardBurger = ({ title, thumbnail, id }) => {
     return (
         <div className="min-h-[20rem] w-[20rem] flex flex-col items-center justify-between rounded-xl text-white mb-[1rem] p-[0.5rem]">
             <div className="">
@@ -16,5 +17,9 @@ const CardBurger = ({ title, description, thumbnail, price, category, id }) => {
         </div>
     )
 }
-
+CardBurger.propTypes = {
+    title: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
+};
 export default CardBurger

@@ -1,27 +1,37 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { IoIosArrowBack } from "react-icons/io";
-import Demo from '../shared/Modal';
+import BurgersModal from '../shared/Modal';
 import { useParams } from 'react-router-dom';
 import NavBar from '../shared/NavBar/NavBar';
 const BurguerDetail = () => {
+    const { id } = useParams();
+    const [productos, setProductos] = useState({});
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    const { id } = useParams();
-    const [productos, setProductos] = useState({});
-    const getProductById = async () => {
-        const response = await fetch(`https://bigburgerbackend-1.onrender.com/api/products/${id}`);
-        const data = await response.json();
-        return data.data
-    }
-    useEffect(() => {
-        getProductById().then((product) => setProductos(product))
-    },)
 
+    useEffect(() => {
+        const getProductById = async () => {
+            try {
+                const response = await fetch(`https://bigburgerbackend-1.onrender.com/api/products/${id}`);
+                const data = await response.json();
+                setProductos(data.data);
+            } catch (error) {
+                console.error("Error fetching product:", error);
+            }
+        };
+
+        if (id) {
+            getProductById();
+        }
+    }, [id]); // <- Se ejecutará solo cuando `id` cambie
+
+    localStorage.setItem('Product', JSON.stringify(productos))
     const { thumbnail, title, description, price } = productos
     return (
-        <div className='flex flex-col items-center justify-between h-[100vh]'>
+        <div className='flex flex-col items-center'>
 
             <div className="hidden text-white lg:flex lg:items-center lg:justify-between z-10">
                 <NavBar />
@@ -40,33 +50,25 @@ const BurguerDetail = () => {
                 </Link>
             </div>
 
-            <div className="flex flex-col items-center lg:flex-row lg:items-start lg:justify-start lg:h-screen lg:mt-[7rem]">
-                <div className="lg:w-1/2 flex">
-                    <div className="text-white lg:block">
-                        <img src={`https://bigburgerbackend-1.onrender.com${thumbnail}`} alt={title} />
-                        <div className='hidden lg:flex lg:items-center lg:justify-center'>
-                            <Demo />
-                        </div>
+            <div className="flex flex-col items-center justify-center mt-[1.5rem]">
+                <div className="">
+                    <h2 className="text-center text-[1.5rem] font-bold">{title}</h2>
+                    <div className="text-white">
+                        <img className='w-[30rem]' src={`https://bigburgerbackend-1.onrender.com${thumbnail}`} alt={title} />
                     </div>
                 </div>
 
-                <div className="w-full lg:w-[70%] flex flex-col items-center">
-                    <div className="text-white flex flex-col items-center gap-4 lg:gap-8">
-                        <h2 className="text-[1.5rem] font-bold md:mt-10 md:text-4xl">{title}</h2>
-                        <p className="text-sm md:text-base text-center">
-                            {description}
-                        </p>
-                        <p className='text-center font-bold'>{'$' + ' ' + price}</p>
+                <div className="">
+                    <div className="text-white flex flex-col items-center gap-2">
+
+                        <p className='text-left font-bold'>{'$' + ' ' + price}</p>
+                        <p className="">{description}</p>
                     </div>
                 </div>
-            </div>
 
-
-            <div className="bg-black w-screen lg:hidden flex items-center justify-center">
-                <div className='className="text-white w-screen p-2 md:p-2 flex items-center justify-center'>
-                    <Demo />
+                <div className='mt-[3rem]'>
+                    <BurgersModal />
                 </div>
-
             </div>
         </div>
 

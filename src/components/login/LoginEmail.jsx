@@ -12,10 +12,10 @@ const LoginEmail = () => {
             <div className='h-screen flex items-center justify-center'>
                 <div className=' text-white flex items-center flex-col justify-center lg:h-screen lg:w-[50vw] lg:items-start lg:pl-[3rem]'>
                     <div>
-                        <h1 className='w-[22rem] lg:w-96 max-w-xl text-[29px] font-bold md:max-w-[34rem] lg:text-5xl mb-[3rem]'>Inicia sesión o regístrate</h1>
+                        <h1 className='w-[22rem] lg:w-96 max-w-xl text-[29px] font-bold md:max-w-[34rem] lg:text-5xl mb-[2rem]'>Inicia sesión o regístrate</h1>
                     </div>
                     <div>
-                        <h3 className='text-lg font-bold  mb-[2rem]'>Ingresa con tu correo electrónico si ya tienes cuenta. Si no, regístrate aquí</h3>
+                        <h3 className='text-lg font-bold mb-[2rem] text-center m-[.5rem] lg:hidden'>Ingresa con tu correo electrónico si ya tienes cuenta. Si no, regístrate aquí</h3>
                     </div>
                     <div className='flex flex-col gap-[2rem]'>
                         <Link to={'/signIn'}>

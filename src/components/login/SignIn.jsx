@@ -52,9 +52,9 @@ const SignIn = () => {
                         <h3 className='mt-8 mb-[2rem] text-sm md:text-lg'>Ingresa tus datos</h3>
                     </div>
                     <div className='flex flex-col gap-[3rem]'>
-                        <div className="flex items-center justify-center">
+                        <div className="">
                             {/* DIV EMAIL */}
-                            <div>
+                            <div className=''>
                                 <form action="" className='flex flex-col gap-[2rem]'>
                                     <div className='relative'>
                                         <input

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Button } from "../components/ui/button"
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom'
 import NavBar from '../shared/NavBar/NavBar';
 
 const Products = () => {
@@ -77,11 +77,21 @@ const Products = () => {
 
     return (
         <>
-            <NavBar />
-            <div className='flex items-center justify-center'>
+            <div className='hidden lg:block'>
+                <NavBar />
+            </div>
+            <div className='lg:hidden fixed top-0 w-full h-[3rem] bg-black text-white flex items-center justify-around'>
+                <Link to={'/'}>
+                    <small>Cancelar</small>
+                </Link>
+                <h1 className='text-center font-bold text-[1.2rem]'>Nuevo producto</h1>
+                <button type="submit" form="miFormulario">Enviar</button>
+
+            </div>
+            {/* <NavBar /> */}
+            <div className='flex items-center justify-center mt-[2rem]'>
                 <div className='w-full p-[1rem] lg:w-[35%]'>
-                    <form onSubmit={handleSubmit}>
-                        <h1 className='text-center font-bold text-[1.2rem]'>Agregar producto</h1>
+                    <form id="miFormulario" onSubmit={handleSubmit}>
                         <div className='flex flex-col items-center gap-[2rem]'>
                             <div className='flex flex-col mt-[2rem] '>
                                 <label className="file-upload-label"
@@ -159,7 +169,6 @@ const Products = () => {
                                     <option value="Vegan">Vegan</option>
                                 </select>
                             </div>
-                            <Button type="submit">Guardar</Button>
                         </div>
                     </form>
                 </div>

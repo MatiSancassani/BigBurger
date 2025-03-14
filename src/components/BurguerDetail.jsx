@@ -4,6 +4,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import BurgersModal from '../shared/Modal';
 import { useParams } from 'react-router-dom';
 import NavBar from '../shared/NavBar/NavBar';
+import Cart from './cart/Cart';
 const BurguerDetail = () => {
     const { id } = useParams();
     const [productos, setProductos] = useState({});
@@ -31,26 +32,25 @@ const BurguerDetail = () => {
     localStorage.setItem('Product', JSON.stringify(productos))
     const { thumbnail, title, description, price } = productos
     return (
-        <div className='flex flex-col items-center'>
-
+        <div className=''>
             <div className="hidden text-white lg:flex lg:items-center lg:justify-between z-10">
                 <NavBar />
             </div>
 
             <div>
-                <Link to="/menu">
-                    <div className="p-[1rem] bg-black w-screen flex items-center justify-start gap-2 text-[1rem] text-white lg:hidden">
-                        <div className='flex items-center justify-center pl-[.5rem]'>
+                <div className="h-[3.5rem] bg-black w-screen flex items-center justify-start text-[1rem] text-white lg:hidden">
+                    <Link to="/menu">
+                        <div className='flex items-center justify-center gap-1'>
                             <IoIosArrowBack />
-                        </div>
-                        <div>
                             <p className='font-bold'>Menu</p>
                         </div>
+                    </Link>
+                    <div>
                     </div>
-                </Link>
+                </div>
             </div>
 
-            <div className="flex flex-col items-center justify-center mt-[1.5rem]">
+            <div className="flex flex-col items-center justify-center mt-[3rem]">
                 <div className="">
                     <h2 className="text-center text-[1.5rem] font-bold">{title}</h2>
                     <div className="text-white">
@@ -70,6 +70,9 @@ const BurguerDetail = () => {
                     <BurgersModal />
                 </div>
             </div>
+
+            <Cart />
+
         </div>
 
     )

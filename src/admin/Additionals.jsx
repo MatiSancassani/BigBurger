@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Button } from "../components/ui/button"
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom'
 import NavBar from '../shared/NavBar/NavBar';
 const Additionals = () => {
     const [thumbnail, setThumbnail] = useState(null);
@@ -49,10 +50,20 @@ const Additionals = () => {
 
     return (
         <>
-            <NavBar />
+            <div className='hidden lg:block'>
+                <NavBar />
+            </div>
+            <div className='lg:hidden fixed top-0 w-full h-[3rem] bg-black text-white flex items-center justify-around'>
+                <Link to={'/'}>
+                    <small>Cancelar</small>
+                </Link>
+                <h1 className='text-center font-bold text-[1.2rem]'>Nuevo adicional</h1>
+                <button type="submit" form="newAdditionalForm">Enviar</button>
+
+            </div>
             <div className='flex items-center justify-center'>
                 <div className='w-full p-[1rem] lg:w-[35%]'>
-                    <form onSubmit={handleSubmit}>
+                    <form id='newAdditionalForm' onSubmit={handleSubmit}>
                         <h1 className='text-center font-bold text-[1.2rem]'>Agregar un adicional</h1>
                         <div className='flex flex-col items-center gap-[2rem]'>
                             <div className='flex flex-col mt-[2rem] '>
@@ -73,7 +84,7 @@ const Additionals = () => {
                                         type="file"
                                         name="thumbnail"
                                         id="thumbnail"
-                                        onChange={(e) => setThumbnail(e.target.files[0])}
+                                        onChange={() => setThumbnail(event.target.files[0])}
                                         accept="image/*"
                                         required />
                                 </label>
@@ -83,7 +94,7 @@ const Additionals = () => {
                                 <input
                                     className='input'
                                     placeholder='Titulo'
-                                    onChange={(e) => setTitle(e.target.value)}
+                                    onChange={() => setTitle(event.target.value)}
                                     type="text"
                                     name="title"
                                     id="title"
@@ -93,7 +104,7 @@ const Additionals = () => {
                             <div className='form'>
                                 <input className='input'
                                     placeholder='Precio'
-                                    onChange={(e) => setPrice(e.target.value)}
+                                    onChange={() => setPrice(event.target.value)}
                                     type="number"
                                     name="price"
                                     id="price"
@@ -101,13 +112,12 @@ const Additionals = () => {
                                 <span className="input-border"></span>
                             </div>
                             <div>
-                                <select name="category" id="category" required onChange={(e) => setCategory(e.target.value)}>
+                                <select name="category" id="category" required onChange={() => setCategory(event.target.value)}>
                                     <option value="">Elige una categoría</option>
                                     <option value="bebidas">Bebidas</option>
                                     <option value="agregados">Agregados</option>
                                 </select>
                             </div>
-                            <Button type="submit">Guardar</Button>
                         </div>
                     </form>
                 </div>

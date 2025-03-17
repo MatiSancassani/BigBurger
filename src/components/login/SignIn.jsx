@@ -61,7 +61,7 @@ const SignIn = () => {
                                             id="email"
                                             name="email"
                                             type="email"
-                                            onChange={() => { setEmail(event.target.value) }}
+                                            onChange={(event) => { setEmail(event.target.value) }}
                                             placeholder=""
                                             className="border-b w-[20rem] border-gray-300 py-1 focus:border-b-2 focus:border-[#e99825] transition-colors focus:outline-none peer bg-inherit"
                                         />
@@ -78,7 +78,7 @@ const SignIn = () => {
                                             id="password"
                                             name="password"
                                             type="password"
-                                            onChange={() => { setPassword(event.target.value) }}
+                                            onChange={(event) => { setPassword(event.target.value) }}
                                             placeholder=""
                                             className="border-b w-[20rem] border-gray-300 py-1 focus:border-b-2 focus:border-[#e99825] transition-colors focus:outline-none peer bg-inherit"
                                         />

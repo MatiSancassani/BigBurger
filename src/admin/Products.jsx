@@ -109,8 +109,8 @@ const Products = () => {
                                     </div>
                                     <input
                                         type="file"
-                                        name="thumbnail"
-                                        id="thumbnail"
+                                        name="productsImages"
+                                        id="productsImages"
                                         onChange={(event) => setThumbnail(event.target.files[0])}
                                         accept="image/*"
                                         required />

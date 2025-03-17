@@ -38,7 +38,7 @@ const Products = () => {
         e.preventDefault();
 
         const formData = new FormData();
-        formData.append('productsImages', thumbnail);
+        formData.append('thumbnail', thumbnail);
         formData.append('title', title);
         formData.append('description', description);
         formData.append('price', price);
@@ -95,7 +95,7 @@ const Products = () => {
                         <div className='flex flex-col items-center gap-[2rem]'>
                             <div className='flex flex-col mt-[2rem] '>
                                 <label className="file-upload-label"
-                                    htmlFor="productsImages"
+                                    htmlFor="thumbnail"
                                 >
                                     <div className="file-upload-design">
                                         <svg height="1em" viewBox="0 0 640 512">
@@ -109,8 +109,8 @@ const Products = () => {
                                     </div>
                                     <input
                                         type="file"
-                                        name="productsImages"
-                                        id="productsImages"
+                                        name="thumbnail"
+                                        id="thumbnail"
                                         onChange={(event) => setThumbnail(event.target.files[0])}
                                         accept="image/*"
                                         required />

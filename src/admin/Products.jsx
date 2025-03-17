@@ -38,7 +38,7 @@ const Products = () => {
         e.preventDefault();
 
         const formData = new FormData();
-        formData.append('thumbnail', thumbnail);
+        formData.append('productsImages', thumbnail);
         formData.append('title', title);
         formData.append('description', description);
         formData.append('price', price);

@@ -95,7 +95,7 @@ const Products = () => {
                         <div className='flex flex-col items-center gap-[2rem]'>
                             <div className='flex flex-col mt-[2rem] '>
                                 <label className="file-upload-label"
-                                    htmlFor="thumbnail"
+                                    htmlFor="productsImages"
                                 >
                                     <div className="file-upload-design">
                                         <svg height="1em" viewBox="0 0 640 512">

@@ -104,14 +104,14 @@ const BurgersModal = () => {
                                 <div className="flex items-center justify-center gap-[3rem]">
 
                                     <div className="hidden lg:block">
-                                        <img className="w-[30rem]" src={`https://bigburgerbackend-1.onrender.com${thumbnail}`} alt={title} />
+                                        <img className="w-[30rem]" src={`${thumbnail}`} alt={title} />
                                     </div>
 
                                     <div className="overflow-auto max-h-[600px] scrollbar-hide">
                                         <div className="mx-[1rem]">
                                             <div className="flex flex-col items-center gap-[1rem]">
                                                 <h2 className="text-[20px] font-bold">{title} </h2>
-                                                <img className="lg:hidden w-[10rem]" src={`https://bigburgerbackend-1.onrender.com${thumbnail}`} alt={title} />
+                                                <img className="lg:hidden w-[10rem]" src={`${thumbnail}`} alt={title} />
                                                 <p className="text-[14px]">$ {price}</p>
                                                 <p className="text-[14px]">{description}</p>
 
@@ -150,7 +150,7 @@ const BurgersModal = () => {
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <img className="w-[60px] lg:ml-[1rem]" src={`https://bigburgerbackend-1.onrender.com${a.thumbnail}`} alt={a.title} />
+                                                                    <img className="w-[60px] lg:ml-[1rem]" src={`${a.thumbnail}`} alt={a.title} />
                                                                 </div>
                                                             </div>
                                                         )
@@ -183,7 +183,7 @@ const BurgersModal = () => {
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <img className="w-[60px] lg:ml-[1rem]" src={`https://bigburgerbackend-1.onrender.com${additional.thumbnail}`} alt={additional.title} />
+                                                                    <img className="w-[60px] lg:ml-[1rem]" src={`${additional.thumbnail}`} alt={additional.title} />
                                                                 </div>
                                                             </div>
                                                         )

@@ -54,7 +54,7 @@ const BurguerDetail = () => {
                 <div className="">
                     <h2 className="text-center text-[1.5rem] font-bold">{title}</h2>
                     <div className="text-white">
-                        <img className='w-[30rem]' src={`https://bigburgerbackend-1.onrender.com${thumbnail}`} alt={title} />
+                        <img className='w-[30rem]' src={`${thumbnail}`} alt={title} />
                     </div>
                 </div>
 

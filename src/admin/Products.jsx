@@ -111,7 +111,7 @@ const Products = () => {
                                         type="file"
                                         name="thumbnail"
                                         id="thumbnail"
-                                        onChange={() => setThumbnail(event.target.files[0])}
+                                        onChange={(event) => setThumbnail(event.target.files[0])}
                                         accept="image/*"
                                         required />
                                 </label>
@@ -121,7 +121,7 @@ const Products = () => {
                                 <input
                                     className='input'
                                     placeholder='Titulo'
-                                    onChange={() => setTitle(event.target.value)}
+                                    onChange={(event) => setTitle(event.target.value)}
                                     type="text"
                                     name="title"
                                     id="title"
@@ -132,7 +132,7 @@ const Products = () => {
                                 <input
                                     className='input'
                                     placeholder='Descripcion'
-                                    onChange={() => setDescription(event.target.value)}
+                                    onChange={(event) => setDescription(event.target.value)}
                                     type="text"
                                     name="description"
                                     id="description"
@@ -142,7 +142,7 @@ const Products = () => {
                             <div className='form'>
                                 <input className='input'
                                     placeholder='Precio'
-                                    onChange={() => setPrice(event.target.value)}
+                                    onChange={(event) => setPrice(event.target.value)}
                                     type="number"
                                     name="price"
                                     id="price"
@@ -152,7 +152,7 @@ const Products = () => {
                             <div className='form'>
                                 <input className='input'
                                     placeholder='Stock'
-                                    onChange={() => setStock(event.target.value)}
+                                    onChange={(event) => setStock(event.target.value)}
                                     type="number"
                                     name="stock"
                                     id="stock"
@@ -160,7 +160,7 @@ const Products = () => {
                                 <span className="input-border"></span>
                             </div>
                             <div>
-                                <select name="category" id="category" required onChange={() => setCategory(event.target.value)}>
+                                <select name="category" id="category" required onChange={(event) => setCategory(event.target.value)}>
                                     <option value="">Elige una categoría</option>
                                     <option value="Classic">Classic</option>
                                     <option value="BBQ">BBQ</option>

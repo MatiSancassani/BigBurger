@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Button } from "../components/ui/button"
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom'
 import NavBar from '../shared/NavBar/NavBar';
@@ -84,7 +83,7 @@ const Additionals = () => {
                                         type="file"
                                         name="thumbnail"
                                         id="thumbnail"
-                                        onChange={() => setThumbnail(event.target.files[0])}
+                                        onChange={(event) => setThumbnail(event.target.files[0])}
                                         accept="image/*"
                                         required />
                                 </label>
@@ -94,7 +93,7 @@ const Additionals = () => {
                                 <input
                                     className='input'
                                     placeholder='Titulo'
-                                    onChange={() => setTitle(event.target.value)}
+                                    onChange={(event) => setTitle(event.target.value)}
                                     type="text"
                                     name="title"
                                     id="title"
@@ -104,7 +103,7 @@ const Additionals = () => {
                             <div className='form'>
                                 <input className='input'
                                     placeholder='Precio'
-                                    onChange={() => setPrice(event.target.value)}
+                                    onChange={(event) => setPrice(event.target.value)}
                                     type="number"
                                     name="price"
                                     id="price"
@@ -112,7 +111,7 @@ const Additionals = () => {
                                 <span className="input-border"></span>
                             </div>
                             <div>
-                                <select name="category" id="category" required onChange={() => setCategory(event.target.value)}>
+                                <select name="category" id="category" required onChange={(event) => setCategory(event.target.value)}>
                                     <option value="">Elige una categoría</option>
                                     <option value="bebidas">Bebidas</option>
                                     <option value="agregados">Agregados</option>

@@ -130,27 +130,27 @@ const BurgersModal = () => {
                                                 <small>(Seleccionar 1)</small>
                                             </div>
                                             <div className="flex flex-col my-[1rem] gap-[1rem] p-[.5rem]">
-                                                {additionals.map((additional) => {
-                                                    if (additional.category === 'agregados') {
+                                                {additionals.map((a) => {
+                                                    if (a.category === 'agregados') {
                                                         return (
-                                                            <div key={additional._id} className="flex items-center justify-between">
+                                                            <div key={a._id} className="flex items-center justify-between">
                                                                 <div className="flex items-center justify-start gap-[1rem]">
                                                                     <input
                                                                         type="radio"
-                                                                        id={`feature-${additional._id}`}
+                                                                        id={`feature-${a._id}`}
                                                                         name="features"
-                                                                        checked={selectedFeature === additional._id}
-                                                                        onChange={() => setSelectedFeature(additional._id)}
+                                                                        checked={selectedFeature === a._id}
+                                                                        onChange={() => setSelectedFeature(a._id)}
                                                                     />
-                                                                    <label htmlFor={`feature-${additional._id}`}>
+                                                                    <label htmlFor={`feature-${additionals._id}`}>
                                                                         <div>
-                                                                            <p className="">{additional.title}</p>
-                                                                            <small>+ $ {additional.price}</small>
+                                                                            <p className="">{a.title}</p>
+                                                                            <small>+ $ {a.price}</small>
                                                                         </div>
                                                                     </label>
                                                                 </div>
                                                                 <div>
-                                                                    <img className="w-[60px] lg:ml-[1rem]" src={`https://bigburgerbackend-1.onrender.com${additional.thumbnail}`} alt={additional.title} />
+                                                                    <img className="w-[60px] lg:ml-[1rem]" src={`https://bigburgerbackend-1.onrender.com${a.thumbnail}`} alt={a.title} />
                                                                 </div>
                                                             </div>
                                                         )

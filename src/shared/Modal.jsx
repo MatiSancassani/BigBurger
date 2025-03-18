@@ -70,11 +70,7 @@ const BurgersModal = () => {
 
     const totalPrice = (price * count) + (selectedAdditional ? selectedAdditional.price : 0) + (selectedAddDrink ? selectedAddDrink.price : 0);
 
-    // const burgers = [
-    //     { id: 1, src: "/img/burgertype/BurgerSimple.png", alt: "Burger Simple", title2: "Simple" },
-    //     { id: 2, src: "/img/burgertype/BurgerDoble.png", alt: "Burger Doble", title2: "Doble" },
-    //     { id: 3, src: "/img/burgertype/BurgerTriple.png", alt: "Burger Triple", title2: "Triple" },
-    // ];
+
     return (
         <HStack wrap="wrap" gap="4">
             <For each={["center"]}>

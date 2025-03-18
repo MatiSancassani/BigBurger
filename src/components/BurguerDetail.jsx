@@ -40,7 +40,7 @@ const BurguerDetail = () => {
             <div>
                 <div className="h-[3.5rem] bg-black w-screen flex items-center justify-start text-[1rem] text-white lg:hidden">
                     <Link to="/menu">
-                        <div className='flex items-center justify-center gap-1'>
+                        <div className='flex items-center justify-center gap-1 p-2'>
                             <IoIosArrowBack />
                             <p className='font-bold'>Menu</p>
                         </div>
@@ -50,11 +50,11 @@ const BurguerDetail = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col items-center justify-center mt-[3rem]">
+            <div className="flex flex-col items-center justify-center mt-[2rem]">
                 <div className="">
                     <h2 className="text-center text-[1.5rem] font-bold">{title}</h2>
-                    <div className="text-white">
-                        <img className='w-[30rem]' src={`${thumbnail}`} alt={title} />
+                    <div className="text-white mt-[2rem]">
+                        <img className='w-[20rem] lg:w-[25rem]' src={`${thumbnail}`} alt={title} />
                     </div>
                 </div>
 

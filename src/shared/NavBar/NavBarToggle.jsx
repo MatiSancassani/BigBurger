@@ -51,7 +51,7 @@ const NavBarToggle = () => {
             </div>
 
 
-            <div className={`absolute h-[100vh] top-0 p-8 z-30 text-white bg-black w-screen lg:w-80 overflow-y-scroll scrollbar-hide transition-all duration-300 ${isNavbarOpen ? "left-0" : "-left-full"}`}>
+            <div className={`fixed top-0 bottom-0 p-8 z-30 text-white bg-black w-screen lg:w-80 overflow-y-scroll scrollbar-hide transition-all duration-300 ${isNavbarOpen ? "left-0" : "-left-full"}`}>
 
                 <div className="flex flex-col justify-between h-full">
 

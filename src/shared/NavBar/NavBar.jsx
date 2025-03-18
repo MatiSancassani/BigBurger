@@ -5,9 +5,9 @@ import NavBarToggle from "./NavBarToggle";
 const NavBar = () => {
 
     return (
-        <div className="">
+        <div>
             <div className="z-20 flex items-center justify-between py-[1rem] px-[2rem] w-[100vw]">
-                <div className="">
+                <div>
                     <NavBarToggle />
                 </div>
 

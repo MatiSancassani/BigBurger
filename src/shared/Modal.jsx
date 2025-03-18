@@ -14,13 +14,12 @@ const BurgersModal = () => {
     const ayuda = JSON.parse(localStorage.getItem('Product'));
 
     const { thumbnail, title, description, price } = ayuda
-
-    // const [selected, setSelected] = useState(null);
     const { id } = useParams();
-    // Estado para el producto
+
+
     const [productos, setProductos] = useState({});
-    // Estado para los adicionales
     const [additionals, setAdditionals] = useState([]);
+    const [selectedBurger, setSelectedBurger] = useState("simple");
     const [selectedFeature, setSelectedFeature] = useState(null);
     const [selectedDrink, setSelectedDrink] = useState(null);
 
@@ -51,7 +50,15 @@ const BurgersModal = () => {
         fetchAdditional();
     }, []);
 
+
+    const options = [
+        { id: "simple", price: 1500, label: "Simple", img: "/img/burgertype/simple.png" },
+        { id: "doble", price: 2000, label: "Doble", img: "/img/burgertype/doble.png" },
+        { id: "triple", price: 2500, label: "Triple", img: "/img/burgertype/triple.png" },
+    ];
+
     // Encontrar el adicional seleccionado
+    const selectedOption = options.find(option => option.id === selectedBurger);
     const selectedAdditional = additionals.find(additional => additional._id === selectedFeature);
     const selectedAddDrink = additionals.find(additional => additional._id === selectedDrink);
 
@@ -68,7 +75,20 @@ const BurgersModal = () => {
         }
     }
 
-    const totalPrice = (price * count) + (selectedAdditional ? selectedAdditional.price : 0) + (selectedAddDrink ? selectedAddDrink.price : 0);
+    const totalPrice =
+        (price * count) +
+        (selectedAdditional ? selectedAdditional.price : 0) +
+        (selectedAddDrink ? selectedAddDrink.price : 0) +
+        (selectedOption ? selectedOption.price : 0);
+
+
+    const orderData = {
+        burger: selectedBurger,
+        quantity: count,
+        additional: selectedFeature,
+        drink: selectedDrink,
+        totalPrice: totalPrice,
+    };
 
 
     return (
@@ -84,18 +104,6 @@ const BurgersModal = () => {
                             <div className="cursor-pointer">
                                 Arma tu burger
                             </div>
-                            {/* <div className='w-[3.5rem] h-[3.5rem] flex justify-center gap-4'>
-                                {burgers.map((burger) => (
-                                    <img
-                                        key={burger.id}
-                                        src={burger.src}
-                                        alt={burger.alt}
-                                        onClick={() => setSelected(burger.id)}
-                                        className={`cursor-pointer hover:brightness-150 transition-all duration-100 
-            ${selected === burger.id ? "brightness-150" : ""}`}
-                                    />
-                                ))}
-                            </div> */}
                         </DialogTrigger>
                         <DialogContent className="lg:w-[80vw] lg:max-w-[1000px] lg:h-auto lg:max-h-[80vh] h-screen bg-black opacity-95">
                             <DialogBody className="mt-[3rem]">
@@ -111,27 +119,36 @@ const BurgersModal = () => {
                                         <div className="mx-[1rem] flex flex-col gap-[2rem]">
 
                                             <div className="flex flex-col items-center gap-[1rem]">
-                                                <h2 className="text-[20px] font-bold">{title} </h2>
+                                                <h2 className="text-[20px] font-bold">{'Burger' + ' ' + title}</h2>
                                                 <img className="lg:hidden w-[10rem]" src={`${thumbnail}`} alt={title} />
                                                 <p className="text-[14px]">$ {price}</p>
                                                 <p className="text-[14px]">{description}</p>
 
                                             </div>
 
-                                            <div className="">
+                                            <div>
                                                 <ul className="flex items-center justify-center gap-[1rem]">
-                                                    <li className="cursor-pointer flex flex-col items-center justify-center">
-                                                        <img className="w-[2.5rem] h-[2.5rem]" src="/img/burgertype/simple.png" alt="" />
-                                                        <small>Simple</small>
-                                                    </li>
-                                                    <li className="cursor-pointer flex flex-col items-center justify-center">
-                                                        <img className="w-[2.5rem] h-[2.5rem]" src="/img/burgertype/doble.png" alt="" />
-                                                        <small>Doble</small>
-                                                    </li>
-                                                    <li className="cursor-pointer flex flex-col items-center justify-center">
-                                                        <img className="w-[2.5rem] h-[2.5rem]" src="/img/burgertype/triple.png" alt="" />
-                                                        <small>Triple</small>
-                                                    </li>
+                                                    {options.map((option) => (
+                                                        <li key={option.id} className="cursor-pointer flex flex-col items-center justify-center">
+                                                            <label className="flex flex-col items-center cursor-pointer">
+                                                                <input
+                                                                    type="radio"
+                                                                    name="burgerType"
+                                                                    value={option.id}
+                                                                    checked={selectedBurger === option.id}
+                                                                    onChange={() => setSelectedBurger(option.id)}
+                                                                    className="hidden"
+                                                                />
+                                                                <img
+                                                                    className={`w-[2.5rem] h-[2.5rem] ${selectedBurger === option.id ? "brightness-50" : ""
+                                                                        }`}
+                                                                    src={option.img}
+                                                                    alt={option.label}
+                                                                />
+                                                                <small>{option.label}</small>
+                                                            </label>
+                                                        </li>
+                                                    ))}
                                                 </ul>
                                             </div>
 
@@ -149,7 +166,6 @@ const BurgersModal = () => {
                                                 <p className="font-bold">Adicionales</p>
                                                 <small>(Seleccionar 1)</small>
                                             </div>
-
                                             <div className="flex flex-col my-[1rem] gap-[1rem] p-[.5rem]">
                                                 {additionals.map((a) => {
                                                     if (a.category === 'agregados') {
@@ -163,7 +179,7 @@ const BurgersModal = () => {
                                                                         checked={selectedFeature === a._id}
                                                                         onChange={() => setSelectedFeature(a._id)}
                                                                     />
-                                                                    <label htmlFor={`feature-${additionals._id}`}>
+                                                                    <label htmlFor={`feature-${a._id}`}>
                                                                         <div>
                                                                             <p className="">{a.title}</p>
                                                                             <small>+ $ {a.price}</small>
@@ -205,8 +221,8 @@ const BurgersModal = () => {
                                                                         </div>
                                                                     </label>
                                                                 </div>
-                                                                <div>
-                                                                    <img className="w-[60px] lg:ml-[1rem]" src={`${additional.thumbnail}`} alt={additional.title} />
+                                                                <div className="">
+                                                                    <img className="w-[35px]" src={`${additional.thumbnail}`} alt={additional.title} />
                                                                 </div>
                                                             </div>
                                                         )
@@ -219,7 +235,7 @@ const BurgersModal = () => {
                                         <div className="sticky bottom-0 py-[12px] px-[24px] w-full rounded-[34px] bg-black text-white text-[20px]">
 
                                             <button className="flex items-center justify-between w-full"
-                                                onClick={() => handleButtonClick({ totalPrice })}>
+                                                onClick={() => handleButtonClick({ totalPrice, orderData })}>
                                                 <p>Agregar</p>
                                                 <p>${totalPrice}</p>
                                             </button>

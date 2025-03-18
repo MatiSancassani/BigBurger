@@ -219,3 +219,66 @@ input:focus~.input-border {
 .browse-button:hover {
     background-color: rgb(14, 14, 14);
 }
+
+/* CHECKBOX MODAL STYLES */
+
+/* From Uiverse.io by adamgiebl */
+/* Hide the default checkbox */
+.probando input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.probando {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+}
+
+/* Caja base */
+.checkmark {
+    position: relative;
+    height: 1.3em;
+    width: 1.3em;
+    background-color: #ccc;
+    transition: all 0.3s;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo cuando está marcado */
+.checked {
+    background-color: #47da99;
+    animation: pop 0.3s ease-in-out;
+}
+
+/* Agregar el checkmark */
+.checked::after {
+    content: "";
+    width: 0.25em;
+    height: 0.5em;
+    border: solid white;
+    border-width: 0 0.15em 0.15em 0;
+    transform: rotate(45deg);
+}
+
+/* Animación */
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

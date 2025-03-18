@@ -18,7 +18,7 @@ const Menu = () => {
     return (
         <>
             <NavBarForMenuComp />
-            <div className="flex flex-col items-center justify-around " >
+            <div className="flex flex-col items-center justify-around" >
                 <div className="mx-[15rem]">
                     <div>
                         <h2 id="classics" className="text-white">CLASSICS</h2>

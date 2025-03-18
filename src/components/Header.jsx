@@ -1,19 +1,19 @@
 
 import { Link } from "react-router-dom"
-
+// slide-in-elliptic-bottom-fwd 
 
 const Header = () => {
 
     return (
-        <div id="header" className={`flex items-center justify-center transition-colors duration-300`}>
-            <div className="mt-[8rem] flex flex-col items-center justify-center">
-                <div className="text-white flex items-center justify-center">
+        <>
+            <div className="flex flex-col ">
+                <div className="flex items-center justify-center mt-[8rem]">
                     <img className="slide-in-elliptic-bottom-fwd z-10 w-[17rem] h-[15rem] absolute
                     lg:w-[35rem] lg:h-[30rem]" src="/img/burgerheader2.png" alt="" />
                     <h2 className="slide-in-left font-fuente font-bold text-white text-[3.5rem]
                     lg:text-[10rem]">BIGBURGER</h2>
                 </div>
-                <div className="flex flex-col items-center justify-center relative top-[8rem]">
+                <div className="flex flex-col items-center justify-center mt-[6rem]">
                     <p className="text-[1.5rem] text-center text-white lg:text-[2.5rem]">¿Estás para una BigBurger?</p>
                     <Link to={'/menu'}>
                         <button className="mt-[2rem] p-[1rem] bg-transparent text-white border border-white font-medium overflow-hidden relative py-3 rounded-md hover:brightness-150 active:opacity-75 outline-none duration-300 group">
@@ -23,9 +23,7 @@ const Header = () => {
                     </Link>
                 </div>
             </div>
-
-
-        </div>
+        </>
     )
 }
 

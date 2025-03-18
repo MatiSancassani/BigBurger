@@ -15,7 +15,7 @@ const BurgersModal = () => {
 
     const { thumbnail, title, description, price } = ayuda
 
-    const [selected, setSelected] = useState(null);
+    // const [selected, setSelected] = useState(null);
     const { id } = useParams();
     // Estado para el producto
     const [productos, setProductos] = useState({});
@@ -70,11 +70,11 @@ const BurgersModal = () => {
 
     const totalPrice = (price * count) + (selectedAdditional ? selectedAdditional.price : 0) + (selectedAddDrink ? selectedAddDrink.price : 0);
 
-    const burgers = [
-        { id: 1, src: "/img/burgertype/BurgerSimple.png", alt: "Burger Simple", title2: "Simple" },
-        { id: 2, src: "/img/burgertype/BurgerDoble.png", alt: "Burger Doble", title2: "Doble" },
-        { id: 3, src: "/img/burgertype/BurgerTriple.png", alt: "Burger Triple", title2: "Triple" },
-    ];
+    // const burgers = [
+    //     { id: 1, src: "/img/burgertype/BurgerSimple.png", alt: "Burger Simple", title2: "Simple" },
+    //     { id: 2, src: "/img/burgertype/BurgerDoble.png", alt: "Burger Doble", title2: "Doble" },
+    //     { id: 3, src: "/img/burgertype/BurgerTriple.png", alt: "Burger Triple", title2: "Triple" },
+    // ];
     return (
         <HStack wrap="wrap" gap="4">
             <For each={["center"]}>
@@ -85,7 +85,10 @@ const BurgersModal = () => {
                         motionPreset="slide-in-bottom"
                     >
                         <DialogTrigger asChild>
-                            <div className='w-[3.5rem] h-[3.5rem] flex justify-center gap-4'>
+                            <div className="cursor-pointer">
+                                Arma tu burger
+                            </div>
+                            {/* <div className='w-[3.5rem] h-[3.5rem] flex justify-center gap-4'>
                                 {burgers.map((burger) => (
                                     <img
                                         key={burger.id}
@@ -96,7 +99,7 @@ const BurgersModal = () => {
             ${selected === burger.id ? "brightness-150" : ""}`}
                                     />
                                 ))}
-                            </div>
+                            </div> */}
                         </DialogTrigger>
                         <DialogContent className="lg:w-[80vw] lg:max-w-[1000px] lg:h-auto lg:max-h-[80vh] h-screen bg-black opacity-95">
                             <DialogBody className="mt-[3rem]">
@@ -108,7 +111,9 @@ const BurgersModal = () => {
                                     </div>
 
                                     <div className="overflow-auto max-h-[600px] scrollbar-hide">
-                                        <div className="mx-[1rem]">
+
+                                        <div className="mx-[1rem] flex flex-col gap-[2rem]">
+
                                             <div className="flex flex-col items-center gap-[1rem]">
                                                 <h2 className="text-[20px] font-bold">{title} </h2>
                                                 <img className="lg:hidden w-[10rem]" src={`${thumbnail}`} alt={title} />
@@ -116,7 +121,25 @@ const BurgersModal = () => {
                                                 <p className="text-[14px]">{description}</p>
 
                                             </div>
-                                            <div className="flex items-center justify-between py-[2rem]">
+
+                                            <div className="">
+                                                <ul className="flex items-center justify-center gap-[1rem]">
+                                                    <li className="cursor-pointer flex flex-col items-center justify-center">
+                                                        <img className="w-[2.5rem] h-[2.5rem]" src="/img/burgertype/simple.png" alt="" />
+                                                        <small>Simple</small>
+                                                    </li>
+                                                    <li className="cursor-pointer flex flex-col items-center justify-center">
+                                                        <img className="w-[2.5rem] h-[2.5rem]" src="/img/burgertype/doble.png" alt="" />
+                                                        <small>Doble</small>
+                                                    </li>
+                                                    <li className="cursor-pointer flex flex-col items-center justify-center">
+                                                        <img className="w-[2.5rem] h-[2.5rem]" src="/img/burgertype/triple.png" alt="" />
+                                                        <small>Triple</small>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div className="flex items-center justify-between">
                                                 <div className="flex items-center justify-center">
                                                     <p>Cantidad: {count}</p>
                                                 </div>
@@ -125,10 +148,12 @@ const BurgersModal = () => {
                                                     <button className="bg-zinc-900 rounded-[10%_/_50%] w-[40px] h-[40px]" onClick={handleSuma}>+</button>
                                                 </div>
                                             </div>
+
                                             <div className="flex items-center justify-between">
                                                 <p className="font-bold">Adicionales</p>
                                                 <small>(Seleccionar 1)</small>
                                             </div>
+
                                             <div className="flex flex-col my-[1rem] gap-[1rem] p-[.5rem]">
                                                 {additionals.map((a) => {
                                                     if (a.category === 'agregados') {
@@ -158,10 +183,12 @@ const BurgersModal = () => {
 
                                                 })}
                                             </div>
+
                                             <div className="flex items-center justify-between">
                                                 <p className="font-bold">Bebida</p>
                                                 <small>(Seleccionar 1)</small>
                                             </div>
+
                                             <div className="flex flex-col my-[1rem] gap-[1rem] p-[.5rem]">
                                                 {additionals.map((additional) => {
                                                     if (additional.category === 'bebidas') {

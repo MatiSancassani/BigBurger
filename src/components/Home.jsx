@@ -8,9 +8,8 @@ const Home = () => {
         <>
             <NavBar />
             <Social />
-            <div id='home'>
-                <Header />
-            </div>
+            <Header />
+
         </>
 
     )

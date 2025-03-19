@@ -47,7 +47,7 @@ const SignUp = () => {
                         <img src="img/login.png" alt="" />
                     </div>
                 </div>
-                <div className='h-screen flex items-center justify-center'>
+                <div className='mt-[3rem] lg:mt-0 flex items-center justify-center'>
                     <div className='text-white flex items-center flex-col justify-center lg:h-screen lg:w-[50vw] lg:items-start lg:pl-[3rem]'>
                         <div className='flex flex-col items-center justify-center'>
                             <div>

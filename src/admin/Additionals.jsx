@@ -113,8 +113,10 @@ const Additionals = () => {
                             <div>
                                 <select name="category" id="category" required onChange={(event) => setCategory(event.target.value)}>
                                     <option value="">Elige una categoría</option>
-                                    <option value="bebidas">Bebidas</option>
                                     <option value="agregados">Agregados</option>
+                                    <option value="bebidas">Bebidas</option>
+                                    <option value="carnes">Medallon</option>
+                                    <option value="combo">Combos</option>
                                 </select>
                             </div>
                         </div>

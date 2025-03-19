@@ -37,7 +37,7 @@ const SignIn = () => {
     }
 
     return (
-        <>{loginUser ? <Home /> : <div className='h-screen flex items-center justify-center'>
+        <>{loginUser ? <Home /> : <div className='flex items-center justify-center'>
             <div className='hidden lg:h-screen lg:w-[50vw] lg:flex lg:items-center lg:justify-center'>
                 <div className=''>
                     <img src="img/login.png" alt="" />
@@ -46,7 +46,7 @@ const SignIn = () => {
             <div className='flex items-center justify-center'>
                 <div className=' text-white flex items-center flex-col justify-center lg:h-screen lg:w-[50vw] lg:items-start lg:pl-[3rem]'>
                     <div className=''>
-                        <h1 className='text-center max-w-xl text-[32px] font-bold md:text-5xl'>¡Qué alegría verte de nuevo por aquí!</h1>
+                        <h1 className='mt-[6rem] lg:mt-0 text-center lg:text-left max-w-xl text-[32px] font-bold md:text-5xl'>¡Qué alegría verte de nuevo por aquí!</h1>
                     </div>
                     <div>
                         <h3 className='mt-8 mb-[2rem] text-sm md:text-lg'>Ingresa tus datos</h3>

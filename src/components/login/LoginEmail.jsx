@@ -4,12 +4,14 @@ import { Link, Links } from 'react-router-dom'
 const LoginEmail = () => {
     return (
         <div className='flex items-center justify-center'>
+
             <div className='hidden lg:h-screen lg:w-[50vw] lg:flex lg:items-center lg:justify-center'>
                 <div className=''>
                     <img src="img/login.png" alt="" />
                 </div>
             </div>
-            <div className='h-screen flex items-center justify-center'>
+
+            <div className='mt-[10rem] flex items-center justify-center lg:mt-0'>
                 <div className=' text-white flex items-center flex-col justify-center lg:h-screen lg:w-[50vw] lg:items-start lg:pl-[3rem]'>
                     <div>
                         <h1 className='w-[22rem] lg:w-96 max-w-xl text-[29px] font-bold md:max-w-[34rem] lg:text-5xl mb-[2rem]'>Inicia sesión o regístrate</h1>

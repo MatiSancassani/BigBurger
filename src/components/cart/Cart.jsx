@@ -18,7 +18,7 @@ function Cart() {
         return total + item.id.price * item.quantity + additionalsTotal;
     }, 0);
 
-    const userCartId = JSON.parse(localStorage.getItem('UserID')) || {}; // ✅ Si es null, usa un objeto vacío
+    const userCartId = (localStorage.getItem('UserID')) || {}; // ✅ Si es null, usa un objeto vacío
     const cart_id = userCartId?.cart_id; // ✅ Usa optional chaining para evitar errores
 
     // Si no hay carrito, no renderizar el componente

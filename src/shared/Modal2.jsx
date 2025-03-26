@@ -38,14 +38,8 @@ const Modal2 = ({ isOpen, closeModal }) => {
         ].filter(Boolean),
     };
     const productId = localStorage.getItem('ProductID')
-    let userCartId;
-    try {
-        userCartId = JSON.parse(localStorage.getItem("UserID")) || {};
-    } catch (error) {
-        console.error("Error al parsear localStorage:", error);
-        userCartId = {}; // Valor por defecto
-    }
-    const cart_id = userCartId?.cart_id;
+    const userCartId = (localStorage.getItem('UserID')) || {}; // ✅ Si es null, usa un objeto vacío
+    const cart_id = userCartId?.cart_id; // ✅ Usa optional chaining para evitar errores
 
     // Si no hay carrito, no renderizar el componente
     if (!cart_id) return null; // ✅ No muestra el carrito si no hay cart_id

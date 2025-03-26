@@ -4,7 +4,7 @@ import Social from './Social'
 import Cart from './cart/Cart'
 
 const Home = () => {
-    const userCartId = JSON.parse(localStorage.getItem('UserID'));
+    const userCartId = (localStorage.getItem('UserID'));
     const cart_id = userCartId?.cart_id; // ✅ Verifica si `cart_id` existe antes de usarlo
 
     return (

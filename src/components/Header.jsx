@@ -1,6 +1,5 @@
 
 import { Link } from "react-router-dom"
-// slide-in-elliptic-bottom-fwd 
 
 const Header = () => {
 

@@ -17,14 +17,16 @@ const NavBarToggle = () => {
         setIsNavbarOpen(!isNavbarOpen);
     };
 
-    const UserIDByLS = localStorage.getItem('UserID');
+    const UserIDByLS = JSON.parse(localStorage.getItem('UserID'));
+    const { _id } = UserIDByLS
+
 
     useEffect(() => {
         if (!UserIDByLS) return; // Si no hay usuario, no llamar a la API
 
         const fetchUserById = async () => {
             try {
-                const response = await fetch(`https://bigburgerbackend-1.onrender.com/api/user/${UserIDByLS}`);
+                const response = await fetch(`https://bigburgerbackend-1.onrender.com/api/user/${_id}`);
                 const data = await response.json();
                 setGetUserById(data.data);
             } catch (error) {
@@ -33,7 +35,7 @@ const NavBarToggle = () => {
         };
 
         fetchUserById();
-    }, [UserIDByLS]); // 🔥 Se ejecuta solo cuando `UserIDByLS` cambia
+    }, [_id]);
 
     return (
         <>

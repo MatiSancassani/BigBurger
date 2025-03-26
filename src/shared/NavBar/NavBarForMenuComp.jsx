@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 const NavBarForMenuComp = () => {
     return (
-        <div className="sticky top-0 z-30">
+        <div className="fixed lg:sticky top-0 z-30">
             <div className="bg-black text-white flex items-center justify-between mb-[2rem] z-10">
 
                 <div className="lg:w-full flex items-center justify-between lg:px-[1.5rem]">

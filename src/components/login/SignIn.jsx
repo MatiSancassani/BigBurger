@@ -24,7 +24,7 @@ const SignIn = () => {
             })
             const dataJson = await response.json();
 
-            localStorage.setItem('UserID', dataJson.data._id)
+            localStorage.setItem('UserID', JSON.stringify(dataJson.data))
             if (dataJson.success) {
                 setLoginUser(true)
             } else {

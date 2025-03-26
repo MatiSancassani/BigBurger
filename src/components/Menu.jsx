@@ -10,15 +10,18 @@ const Menu = () => {
         return data.data
 
     }
+
     const [productos, setProductos] = useState([]);
     useEffect(() => {
         getProduct().then((product) => setProductos(product))
     }, [])
 
+
+
     return (
         <>
             <NavBarForMenuComp />
-            <div className="flex flex-col items-center justify-around" >
+            <div className="flex flex-col items-center justify-around mt-[4rem] lg:mt-0" >
                 <div className="mx-[15rem]">
                     <div>
                         <h2 id="classics" className="text-white">CLASSICS</h2>

@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { IoIosArrowBack } from "react-icons/io";
-import BurgersModal from '../shared/Modal';
+// import BurgersModal from '../shared/Modal';
 import { useParams } from 'react-router-dom';
 import NavBar from '../shared/NavBar/NavBar';
 import Cart from './cart/Cart';
 const BurguerDetail = () => {
     const { id } = useParams();
     const [productos, setProductos] = useState({});
+    localStorage.setItem('ProductID', (id))
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -28,9 +29,9 @@ const BurguerDetail = () => {
             getProductById();
         }
     }, [id]); // <- Se ejecutará solo cuando `id` cambie
-
-    localStorage.setItem('Product', JSON.stringify(productos))
     const { thumbnail, title, description, price } = productos
+
+
     return (
         <div className=''>
             <div className="hidden text-white lg:flex lg:items-center lg:justify-between z-10">
@@ -67,7 +68,7 @@ const BurguerDetail = () => {
                 </div>
 
                 <div className='mt-[3rem]'>
-                    <BurgersModal />
+                    {/* <BurgersModal /> */}
                 </div>
             </div>
 

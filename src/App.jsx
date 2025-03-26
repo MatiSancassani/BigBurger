@@ -8,22 +8,27 @@ import SignIn from "./components/login/SignIn"
 import SignUp from "./components/login/SignUp"
 import Products from "./admin/Products"
 import Additionals from "./admin/Additionals"
+import Cart from "./components/cart/Cart"
+import { CartProvider } from "./components/cart/CartContext"; // Importa CartProvider
 function App() {
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/burger/:id" element={<BurguerDetail />} />
-        <Route path="/login-email" element={<LoginEmail />} />
-        <Route path="/signIn" element={<SignIn />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/additionals" element={<Additionals />} />
-      </Routes>
-    </BrowserRouter>
+    <CartProvider> {/* 🔥 Envuelve todo en CartProvider */}
+      <BrowserRouter>
+        <Cart />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/burger/:id" element={<BurguerDetail />} />
+          <Route path="/login-email" element={<LoginEmail />} />
+          <Route path="/signIn" element={<SignIn />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/additionals" element={<Additionals />} />
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
   )
 }
 

@@ -9,7 +9,7 @@ import SignUp from "./components/login/SignUp"
 import Products from "./admin/Products"
 import Additionals from "./admin/Additionals"
 import Cart from "./components/cart/Cart"
-import { CartProvider } from "./components/cart/CartContext"; // Importa CartProvider
+import { CartProvider } from './components/context/NewContext'; // Importa CartProvider
 function App() {
 
   return (

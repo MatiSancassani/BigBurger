@@ -4,7 +4,7 @@ import { IoIosArrowBack } from "react-icons/io";
 // import BurgersModal from '../shared/Modal';
 import { useParams } from 'react-router-dom';
 import NavBar from '../shared/NavBar/NavBar';
-import Cart from './cart/Cart';
+// import Cart from './cart/Cart';
 const BurguerDetail = () => {
     const { id } = useParams();
     const [productos, setProductos] = useState({});
@@ -72,7 +72,7 @@ const BurguerDetail = () => {
                 </div>
             </div>
 
-            <Cart />
+            {/* <Cart /> */}
 
         </div>
 

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useCart } from "./CartContext";
+import { useCart } from "../context/NewContext";
 import { IoMdClose } from "react-icons/io";
 import { HiOutlineTrash } from "react-icons/hi";
 
 function Cart() {
-    const { cart, getCart } = useCart();
+    const { cart, getCart, user } = useCart();
+    const { cart_id } = user;
     const [toggleCart, setToggleCart] = useState(false);
 
     const handleClick = () => setToggleCart(!toggleCart);
@@ -18,12 +19,6 @@ function Cart() {
         return total + item.id.price * item.quantity + additionalsTotal;
     }, 0);
 
-    const userCartId = (localStorage.getItem('UserID')) || {}; // ✅ Si es null, usa un objeto vacío
-    const cart_id = userCartId?.cart_id; // ✅ Usa optional chaining para evitar errores
-
-    // Si no hay carrito, no renderizar el componente
-    if (!cart_id) return null; // ✅ No muestra el carrito si no hay cart_id
-
     const deleteAllProducts = async () => {
         await fetch(`https://bigburgerbackend-1.onrender.com/api/carts/${cart_id}`, {
             method: "DELETE",
@@ -31,7 +26,7 @@ function Cart() {
                 "Content-Type": "application/json",
             },
         });
-        await getCart(); // Actualizar el carrito después de eliminar los productos
+        getCart(user.cart_id); // Actualizar el carrito después de eliminar los productos
     };
 
     const deleteProduct = async (id) => {
@@ -41,7 +36,7 @@ function Cart() {
                 "Content-Type": "application/json",
             },
         });
-        await getCart(); // Actualizar el carrito después de eliminar el producto
+        getCart(user.cart_id); // Actualizar el carrito después de eliminar el producto
     };
 
 

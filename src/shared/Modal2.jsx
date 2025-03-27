@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import { useCart } from "../components/cart/CartContext"; // Importar el contexto
+import { useCart } from "../components/context/NewContext"; // Importar el contexto
 
 const Modal2 = ({ isOpen, closeModal }) => {
     const [productos, setProductos] = useState({});
@@ -9,8 +9,9 @@ const Modal2 = ({ isOpen, closeModal }) => {
     const [selectedFeatures, setSelectedFeatures] = useState([]);
     const [selectedDrinks, setSelectedDrinks] = useState([]);
     const [count, setCount] = useState(1);
-    const { getCart } = useCart();
+    const { getCart, cart, user } = useCart();
 
+    const { cart_id } = user;
     const handleFeatureChange = (featureId) => {
         setSelectedFeatures((prev) =>
             prev.includes(featureId) ? prev.filter((id) => id !== featureId) : [...prev, featureId]
@@ -38,16 +39,11 @@ const Modal2 = ({ isOpen, closeModal }) => {
         ].filter(Boolean),
     };
     const productId = localStorage.getItem('ProductID')
-    const userCartId = (localStorage.getItem('UserID')) || {}; // ✅ Si es null, usa un objeto vacío
-    const cart_id = userCartId?.cart_id; // ✅ Usa optional chaining para evitar errores
-
-    // Si no hay carrito, no renderizar el componente
-    if (!cart_id) return null; // ✅ No muestra el carrito si no hay cart_id
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!userCartId || !productId) {
+        if (!cart_id || !productId) {
             console.error("Error: userCartId o productId son nulos o indefinidos.");
             return;
         }
@@ -65,7 +61,7 @@ const Modal2 = ({ isOpen, closeModal }) => {
             try {
                 const result = JSON.parse(text);
                 if (response.ok) {
-                    await getCart(); // 🔥 ACTUALIZA EL CARRITO, PERO SIN ABRIRLO
+                    getCart(user.cart_id); // 🔥 ACTUALIZA EL CARRITO, PERO SIN ABRIRLO
                     closeModal(); // 🔥 CIERRA EL MODAL DESPUÉS DE AGREGAR EL PRODUCTO
                 } else {
                     console.error("Error al agregar al carrito:", result);

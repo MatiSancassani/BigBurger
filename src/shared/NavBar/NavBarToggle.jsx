@@ -1,41 +1,21 @@
 import { IoMdClose } from "react-icons/io";
 import { CiLogin } from "react-icons/ci";
 import { IoSettings } from "react-icons/io5";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react";
-import { useEffect } from "react";
 import ButtonAdmin from "../../admin/ButtonAdmin";
+import { useCart } from "../../components/context/NewContext";
 const NavBarToggle = () => {
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-    const [getUserById, setGetUserById] = useState(null);
-
+    const navigate = useNavigate();
+    const { user } = useCart()
     const buttonSigOut = () => {
-        localStorage.removeItem('UserID');
+        navigate("/login");
     }
 
     const toggleMenu = () => {
         setIsNavbarOpen(!isNavbarOpen);
     };
-
-    const UserIDByLS = JSON.parse(localStorage.getItem('UserID'));
-    const { _id } = UserIDByLS
-
-
-    useEffect(() => {
-        if (!UserIDByLS) return; // Si no hay usuario, no llamar a la API
-
-        const fetchUserById = async () => {
-            try {
-                const response = await fetch(`https://bigburgerbackend-1.onrender.com/api/user/${_id}`);
-                const data = await response.json();
-                setGetUserById(data.data);
-            } catch (error) {
-                console.error("Error en el fetch(getUserById):", error);
-            }
-        };
-
-        fetchUserById();
-    }, [_id]);
 
     return (
         <>
@@ -79,7 +59,7 @@ const NavBarToggle = () => {
                             </li>
                             <li><Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Contact</Link></li>
                             <li>
-                                {getUserById?.rol == true ? <div className="">
+                                {user?.rol == true ? <div className="">
                                     <ButtonAdmin />
                                 </div> : null}
                             </li>
@@ -88,19 +68,19 @@ const NavBarToggle = () => {
 
                     <div className="">
 
-                        {getUserById ? <div className="cursor-pointer flex items-center gap-4 text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
+                        {user ? <div className="cursor-pointer flex items-center gap-4 text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
                             <IoSettings />
                             <Link to={'/setting'}>Setting</Link>
                         </div> : null}
                         <div className="cursor-pointer text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors" >
                             <button onClick={buttonSigOut} className="flex items-center gap-4">
                                 <CiLogin />
-                                {getUserById ? <Link to={'/login'}>Sign out</Link> : <Link to={'/login'}>Sign In</Link>}
+                                {user ? <Link to={'/login'}>Sign out</Link> : <Link to={'/login'}>Sign In</Link>}
                             </button>
                         </div>
                         <div className="cursor-pointer flex items-center gap-4 text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">
                             <img className="w-4 h-4 object-cover rounded-full" src="/img/user.png" alt="" />
-                            <p>{getUserById ? `${getUserById.userName}` : 'Invitado'}</p>
+                            <p>{user ? `${user.userName}` : 'Invitado'}</p>
                         </div>
 
 

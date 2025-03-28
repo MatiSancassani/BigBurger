@@ -8,8 +8,9 @@ import { useCart } from "../../components/context/NewContext";
 const NavBarToggle = () => {
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
     const navigate = useNavigate();
-    const { user } = useCart()
+    const { user, logout } = useCart();
     const buttonSigOut = () => {
+        logout();
         navigate("/login");
     }
 

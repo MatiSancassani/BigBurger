@@ -3,42 +3,69 @@ import { createContext, useState, useEffect, useContext } from "react";
 const NewContext = createContext();
 export const useCart = () => useContext(NewContext);
 
-
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [user, setUser] = useState(null);
 
+    // Cargar usuario y carrito desde localStorage al iniciar
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            const parsedUser = JSON.parse(storedUser);
+            setUser(parsedUser);
+        }
 
-    // Función para obtener el carrito desde la API
+        const storedCart = localStorage.getItem("cart");
+        if (storedCart) {
+            setCart(JSON.parse(storedCart));
+        }
+    }, []);
+
+    // Guardar el carrito en localStorage cada vez que cambie
+    useEffect(() => {
+        if (cart.length > 0) {
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+    }, [cart]);
+
+    // Obtener el carrito cuando el usuario esté definido
+    useEffect(() => {
+        if (user && user.cart_id) {
+            getCart(user.cart_id);
+        }
+    }, [user]); // Se ejecuta solo cuando `user` cambia
+
+    // Obtener carrito desde la API
     const getCart = async (cart_id) => {
         if (!cart_id) return;
-
-        setCart([]);
 
         try {
             const response = await fetch(`https://bigburgerbackend-1.onrender.com/api/carts/${cart_id}`);
             const data = await response.json();
-            setCart(data.data.products || []);
+
+            if (data.data.products) {
+                setCart(data.data.products);
+                localStorage.setItem("cart", JSON.stringify(data.data.products));
+            }
         } catch (error) {
             console.error("Error al obtener el carrito:", error);
         }
     };
 
-    // Función para iniciar sesión y obtener carrito
+    // Iniciar sesión y obtener carrito
     const login = async (email, password) => {
         try {
             const response = await fetch("https://bigburgerbackend-1.onrender.com/api/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                credentials: "include",
                 body: JSON.stringify({ email, password })
             });
             const data = await response.json();
 
             if (data.success) {
-                setUser(data.data); // Guardamos el usuario
-                setCart([]);
-                getCart(data.data.cart_id); // Cargamos su carrito
+                setUser(data.data);
+                localStorage.setItem("user", JSON.stringify(data.data));
+                getCart(data.data.cart_id);
             } else {
                 console.error("Error de login:", data.message);
             }
@@ -47,10 +74,12 @@ export const CartProvider = ({ children }) => {
         }
     };
 
-    // Función para cerrar sesión
+    // Cerrar sesión
     const logout = () => {
         setUser(null);
         setCart([]);
+        localStorage.removeItem("user");
+        localStorage.removeItem("cart");
     };
 
     return (
@@ -59,4 +88,3 @@ export const CartProvider = ({ children }) => {
         </NewContext.Provider>
     );
 };
-

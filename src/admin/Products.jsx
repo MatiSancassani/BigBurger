@@ -45,8 +45,6 @@ const Products = () => {
         formData.append('stock', stock);
         formData.append('category', category);
 
-        console.log(formData)
-
         try {
             const response = await fetch("https://bigburgerbackend-1.onrender.com/api/products", {
                 method: "POST",

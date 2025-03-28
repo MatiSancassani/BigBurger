@@ -5,7 +5,7 @@ import { HiOutlineTrash } from "react-icons/hi";
 
 function Cart() {
     const { cart, getCart, user } = useCart();
-    const { cart_id } = user;
+    const cart_id = user?.cart_id;
     const [toggleCart, setToggleCart] = useState(false);
 
     const handleClick = () => setToggleCart(!toggleCart);
@@ -97,7 +97,7 @@ function Cart() {
             </div>
 
             {/* Carrito desplegable */}
-            <div className={`fixed top-0 lg:p-[1rem] h-full  z-[999] text-white bg-black w-screen lg:w-[35%] overflow-y-scroll scrollbar-hide transition-all duration-300 ${toggleCart ? "right-0" : "-left-full"}`}>
+            <div className={`fixed top-0 lg:p-[1rem] h-full  z-[999] text-white bg-black w-screen lg:w-[35%] overflow-y-scroll scrollbar-hide transition-all duration-300 ${toggleCart ? "right-0" : "-right-full"}`}>
                 <div className="flex items-center justify-center m-[1.5rem]">
                     <h2 className="text-center text-gray-300 font-bold text-2xl tracking-[2px] uppercase">My Order</h2>
                 </div>
@@ -157,7 +157,7 @@ function Cart() {
                 </div>
 
                 <div className="flex items-center justify-center">
-                    <button onClick={deleteAllProducts} className="border-2 border-red-600 p-2 rounded">
+                    <button onClick={deleteAllProducts} className="border-2 border-red-600 p-2 rounded-[10% / 50%]">
                         Vaciar Carrito
                     </button>
                 </div>

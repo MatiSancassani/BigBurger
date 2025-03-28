@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { useCart } from "../components/context/NewContext"; // Importar el contexto
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 const Modal2 = ({ isOpen, closeModal }) => {
     const [productos, setProductos] = useState({});
@@ -11,7 +12,7 @@ const Modal2 = ({ isOpen, closeModal }) => {
     const [count, setCount] = useState(1);
     const { getCart, cart, user } = useCart();
 
-    const { cart_id } = user;
+    const cart_id = user?.cart_id;
     const handleFeatureChange = (featureId) => {
         setSelectedFeatures((prev) =>
             prev.includes(featureId) ? prev.filter((id) => id !== featureId) : [...prev, featureId]
@@ -47,6 +48,28 @@ const Modal2 = ({ isOpen, closeModal }) => {
             console.error("Error: userCartId o productId son nulos o indefinidos.");
             return;
         }
+        toast.success('Producto Agregado', {
+            position: "top-center",
+            autoClose: 1000,
+            closeOnClick: true,
+            hideProgressBar: true,
+            closeButton: false,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+            style: {
+                backgroundColor: 'rgba(255, 255, 255, 0.9)', // Fondo blanco translúcido
+                width: '220px', // Ajusta el ancho según tus necesidades
+                padding: '10px 15px', // Aumenta el padding para mayor espacio
+                fontSize: '16px', // Aumenta el tamaño de la fuente
+                borderRadius: '12px', // Esquinas redondeadas, similar a iOS
+                color: '#000', // Color del texto negro
+                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)', // Sombra sutil
+                backdropFilter: 'blur(10px)',
+            }
+        });
 
         try {
             const response = await fetch(`https://bigburgerbackend-1.onrender.com/api/carts/${cart_id}/product/${productId}`, {
@@ -61,8 +84,9 @@ const Modal2 = ({ isOpen, closeModal }) => {
             try {
                 const result = JSON.parse(text);
                 if (response.ok) {
-                    getCart(user.cart_id); // 🔥 ACTUALIZA EL CARRITO, PERO SIN ABRIRLO
-                    closeModal(); // 🔥 CIERRA EL MODAL DESPUÉS DE AGREGAR EL PRODUCTO
+                    getCart(user.cart_id);
+                    // 🔥 ACTUALIZA EL CARRITO, PERO SIN ABRIRLO
+                    // closeModal(); // 🔥 CIERRA EL MODAL DESPUÉS DE AGREGAR EL PRODUCTO
                 } else {
                     console.error("Error al agregar al carrito:", result);
                 }
@@ -250,15 +274,16 @@ const Modal2 = ({ isOpen, closeModal }) => {
                             </div>
                         </div>
 
-                        <div className="sticky bottom-[11px] p-3 lg:-bottom-[1rem] flex items-center justify-center bg-black font-bold">
+                        {user ? <div className="sticky bottom-[11px] p-3 lg:-bottom-[1rem] flex items-center justify-center bg-black font-bold">
                             <div>
                                 <button
                                     className="flex items-center justify-between w-full"
                                     onClick={handleSubmit}>
                                     Agregar al carrito - ${totalPrice}
                                 </button>
+                                <ToastContainer />
                             </div>
-                        </div>
+                        </div> : null}
 
 
                     </div>

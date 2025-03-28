@@ -1,7 +1,7 @@
 import Home from "./components/Home"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import BurguerDetail from "./components/BurguerDetail"
-import Menu from "./components/Menu"
+import Menu from "./components/Menu/Menu"
 import Login from "./components/login/Login"
 import LoginEmail from "./components/login/LoginEmail"
 import SignIn from "./components/login/SignIn"

@@ -18,19 +18,19 @@ const NavBarForMenuComp = () => {
                             <Link to="/"><IoIosArrowBack /></Link>
                         </div>
                         <ul className="text-[15px] flex items-center justify-between lg:justify-center gap-7">
-                            <ScrollLink to="classics" spy={true} smooth={true} offset={-100} duration={500}>
+                            <ScrollLink to="classic" spy={true} smooth={true} offset={-50} duration={500}>
                                 <li className="cursor-pointer border-b-[3px] border-transparent hover:border-white">CLASSICS</li>
                             </ScrollLink>
-                            <ScrollLink to="bbq" spy={true} smooth={true} offset={-100} duration={500}>
+                            <ScrollLink to="bbq" spy={true} smooth={true} offset={-50} duration={500}>
                                 <li className="cursor-pointer border-b-[3px] border-transparent hover:border-white">BBQ</li>
                             </ScrollLink>
-                            <ScrollLink to="bacon" spy={true} smooth={true} offset={-100} duration={500}>
+                            <ScrollLink to="bacon" spy={true} smooth={true} offset={-50} duration={500}>
                                 <li className="cursor-pointer border-b-[3px] border-transparent hover:border-white">BACON</li>
                             </ScrollLink>
-                            <ScrollLink to="chicken" spy={true} smooth={true} offset={-100} duration={500}>
+                            <ScrollLink to="chicken" spy={true} smooth={true} offset={-50} duration={500}>
                                 <li className="cursor-pointer border-b-[3px] border-transparent hover:border-white">CHICKEN</li>
                             </ScrollLink>
-                            <ScrollLink to="vegan" spy={true} smooth={true} offset={-100} duration={500}>
+                            <ScrollLink to="vegan" spy={true} smooth={true} offset={-50} duration={500}>
                                 <li className="pr-4 cursor-pointer border-b-[3px] border-transparent hover:border-white">VEGAN</li>
                             </ScrollLink>
                         </ul>

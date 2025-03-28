@@ -60,6 +60,8 @@ const Modal2 = ({ isOpen, closeModal }) => {
             theme: "dark",
             transition: Bounce,
             style: {
+                zIndex: 99999,
+                margin: '30px 0 0 0',
                 backgroundColor: 'rgba(255, 255, 255, 0.9)', // Fondo blanco translúcido
                 width: '220px', // Ajusta el ancho según tus necesidades
                 padding: '10px 15px', // Aumenta el padding para mayor espacio
@@ -144,7 +146,8 @@ const Modal2 = ({ isOpen, closeModal }) => {
     if (!isOpen) return null;
     return (
         <div className="fixed inset-0 flex flex-col items-center justify-center z-[90] lg:mt-[5rem]">
-            <div className="w-full h-full bg-black bg-opacity-95 p-6 rounded-lg shadow-lg relative lg:w-[60vw] lg:h-[80vh]">
+            <div className="h-full bg-black bg-opacity-95 p-6 rounded-lg shadow-lg relative lg:w-[60vw] lg:h-[80vh]">
+
                 <div className="">
                     <button className="absolute top-4 right-4 text-2xl text-white" onClick={closeModal}>
                         <IoMdClose />
@@ -157,7 +160,7 @@ const Modal2 = ({ isOpen, closeModal }) => {
                         <img className="w-[20rem]" src={`${productos.thumbnail}`} alt={productos.title} />
                     </div>
 
-                    <div className="max-h-[100vh] lg:w-[50%] flex flex-col gap-5 overflow-y-auto lg:max-h-[70vh] p-4 scrollbar-hide">
+                    <div className="max-h-[80vh] lg:w-[50%] flex flex-col gap-5 overflow-y-auto lg:max-h-[70vh] p-4 scrollbar-hide">
                         <div className="flex flex-col items-center gap-[1rem]">
                             <h2 className="text-[20px] font-bold">Burger {productos.title}</h2>
                             <img className="lg:hidden w-[10rem]" src={`${productos.thumbnail}`} alt={productos.title} />
@@ -274,7 +277,7 @@ const Modal2 = ({ isOpen, closeModal }) => {
                             </div>
                         </div>
 
-                        {user ? <div className="sticky bottom-[11px] p-3 lg:-bottom-[1rem] flex items-center justify-center bg-black font-bold">
+                        {user ? <div className="sticky -bottom-[20px] p-3 flex items-center justify-center bg-black font-bold">
                             <div>
                                 <button
                                     className="flex items-center justify-between w-full"
@@ -284,10 +287,7 @@ const Modal2 = ({ isOpen, closeModal }) => {
                                 <ToastContainer />
                             </div>
                         </div> : null}
-
-
                     </div>
-
                 </div>
 
 

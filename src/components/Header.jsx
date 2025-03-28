@@ -5,7 +5,7 @@ const Header = () => {
 
     return (
         <>
-            <div className="flex flex-col ">
+            <div className="flex flex-col mt-[3rem] lg:mt-0">
                 <div className="flex items-center justify-center mt-[4rem]">
                     <img className="z-10 w-[17rem] h-[15rem] absolute
                     lg:w-[35rem] lg:h-[30rem]" src="/img/burgerheader2.png" alt="" />

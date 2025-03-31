@@ -6,6 +6,7 @@ export const useCart = () => useContext(NewContext);
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [user, setUser] = useState(null);
+    const [products, setProducts] = useState([]);
 
     // Cargar usuario y carrito desde localStorage al iniciar
     useEffect(() => {
@@ -74,6 +75,16 @@ export const CartProvider = ({ children }) => {
         }
     };
 
+    useEffect(() => {
+        const getProduct = async () => {
+            const response = await fetch("https://bigburgerbackend-1.onrender.com/api/products");
+            const data = await response.json();
+            setProducts(data.data);
+        };
+
+        getProduct();
+    }, []);
+
     // Cerrar sesión
     const logout = () => {
         setUser(null);
@@ -83,7 +94,7 @@ export const CartProvider = ({ children }) => {
     };
 
     return (
-        <NewContext.Provider value={{ cart, setCart, getCart, login, logout, user }}>
+        <NewContext.Provider value={{ cart, setCart, getCart, login, logout, user, products }}>
             {children}
         </NewContext.Provider>
     );

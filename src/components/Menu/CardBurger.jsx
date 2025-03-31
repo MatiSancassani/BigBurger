@@ -8,10 +8,9 @@ const CardBurger = ({ title, thumbnail, id, price, description }) => {
     const [isOpen, setIsOpen] = useState(false);
     const handleClick = () => {
         setIsOpen(!isOpen);
-        localStorage.setItem('ProductID', id);
     }
     return (
-        <div>
+        <div className="">
 
             <div className="flex">
                 <button onClick={handleClick} className="hidden lg:flex lg:w-[15rem] lg:flex-col lg:items-center lg:rounded-xl lg:text-white lg:mb-[1rem] lg:gap-2">
@@ -23,18 +22,22 @@ const CardBurger = ({ title, thumbnail, id, price, description }) => {
             </div>
 
             <button onClick={handleClick} className="lg:hidden bg-black bg-opacity-50 rounded flex w-screen items-center justify-between  text-white mb-[1rem] gap-2 p-4">
-                <div className="flex items-center gap-5">
+                <div>
                     <img className="w-[5rem]" src={`${thumbnail}`} alt={title} />
-                    <div>
+                </div>
+
+                <div className="flex items-center">
+                    <div className="text-center">
                         <h5 className="text-[1.3rem] font-sans font-bold text-center">{title}</h5>
                         <p className="font-thin">{description}</p>
                         <p className="font-thin">Desde {price}</p>
                     </div>
                 </div>
+
                 <MdOutlineKeyboardArrowRight className="text-[2rem]" />
             </button>
 
-            <Modal2 className="" isOpen={isOpen} closeModal={() => setIsOpen(false)} />
+            <Modal2 className="" title={title} thumbnail={thumbnail} id={id} price={price} isOpen={isOpen} closeModal={() => setIsOpen(false)} />
         </div>
     )
 }

@@ -1,4 +1,3 @@
-import React from 'react'
 import { FcGoogle } from "react-icons/fc";
 import { FaApple, FaFacebook } from "react-icons/fa";
 import { RiArrowRightLine } from "react-icons/ri";
@@ -6,6 +5,9 @@ import { TfiEmail } from "react-icons/tfi";
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+    const GoogleLoginButton = () => {
+        window.location.href = 'https://bigburgerbackend-1.onrender.com/api/google';
+    }
     return (
         <div className='flex items-center justify-center'>
             <div className='hidden lg:h-screen lg:w-[50vw] lg:flex lg:items-center lg:justify-center'>
@@ -22,7 +24,9 @@ const Login = () => {
                         <h3 className='text-lg font-bold  mb-[2rem]'>Inicia sesión</h3>
                     </div>
                     <div className='flex flex-col gap-[2rem] items-start'>
-                        <div className='w-[20rem] cursor-pointer flex items-center p-[1rem] lg:w-[25rem] hover:bg-black hover:bg-opacity-50 rounded border border-neutral-400 font-bold '>
+                        <div
+                            onClick={GoogleLoginButton}
+                            className='w-[20rem] cursor-pointer flex items-center p-[1rem] lg:w-[25rem] hover:bg-black hover:bg-opacity-50 rounded border border-neutral-400 font-bold '>
                             <div className='pr-[1rem]'>
                                 <FcGoogle />
                             </div>

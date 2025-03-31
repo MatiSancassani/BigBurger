@@ -5,12 +5,11 @@ const CategorySection = ({ category, productos }) => {
     const filteredProducts = productos.filter((p) => p.category === category);
 
     return (
-        <div>
-            <h2 id={category.toLowerCase()} className="text-white p-[2rem] text-[1.5rem] font-bold">
+        <div className="">
+            <h2 id={category.toLowerCase()} className="text-white p-[1rem] text-[1.5rem] font-bold">
                 {category.toUpperCase()}
             </h2>
-            <div className="flex items-center justify-evenly gap-[1rem] flex-wrap mb-[2rem]
-          lg:items-center lg:justify-start lg:gap-[1rem] lg:flex-wrap lg:mb-[2rem]">
+            <div className="flex flex-wrap lg:items-center lg:justify-start lg:gap-[1rem] lg:flex-wrap lg:mb-[2rem]">
                 {filteredProducts.map((p) => (
                     <CardBurger
                         key={p._id}

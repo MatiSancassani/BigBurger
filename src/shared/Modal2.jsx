@@ -3,7 +3,7 @@ import { IoMdClose } from "react-icons/io";
 import { useCart } from "../components/context/NewContext"; // Importar el contexto
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 
-const Modal2 = ({ isOpen, closeModal }) => {
+const Modal2 = ({ isOpen, closeModal, id }) => {
     const [productos, setProductos] = useState({});
     const [additionals, setAdditionals] = useState([]);
     const [selectedBurger, setSelectedBurger] = useState(null);
@@ -12,6 +12,7 @@ const Modal2 = ({ isOpen, closeModal }) => {
     const [count, setCount] = useState(1);
     const { getCart, cart, user } = useCart();
 
+    const productId = id;
     const cart_id = user?.cart_id;
     const handleFeatureChange = (featureId) => {
         setSelectedFeatures((prev) =>
@@ -39,7 +40,6 @@ const Modal2 = ({ isOpen, closeModal }) => {
             ...selectedDrinks.map((id) => ({ id, quantity: 1 })),
         ].filter(Boolean),
     };
-    const productId = localStorage.getItem('ProductID')
 
     const handleSubmit = async (e) => {
         e.preventDefault();

@@ -1,34 +1,23 @@
-import { useState } from "react"
-import { useEffect } from "react"
 import NavBarForMenuComp from "../../shared/NavBar/NavBarForMenuComp"
 import CategorySection from "./CategorySection";
+import { useCart } from '../context/NewContext'
 
 
 const Menu = () => {
-    const [productos, setProductos] = useState([]);
-
-    useEffect(() => {
-        const getProduct = async () => {
-            const response = await fetch("https://bigburgerbackend-1.onrender.com/api/products");
-            const data = await response.json();
-            setProductos(data.data);
-        };
-
-        getProduct();
-    }, []);
+    const { products } = useCart();
     const categorias = ["Classic", "BBQ", "Bacon", "Chicken", "Vegan"];
 
     return (
-        <>
+        <div className="">
             <NavBarForMenuComp />
             <div className="flex flex-col items-center justify-center mt-[4rem] lg:mt-0">
                 <div className="flex flex-col">
                     {categorias.map((categoria) => (
-                        <CategorySection key={categoria} category={categoria} productos={productos} />
+                        <CategorySection key={categoria} category={categoria} productos={products} />
                     ))}
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

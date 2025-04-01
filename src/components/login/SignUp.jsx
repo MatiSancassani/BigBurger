@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import SignIn from './SignIn'
 
@@ -8,8 +8,32 @@ const SignUp = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [registerSuccess, setRegisterSuccess] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+    const navigate = useNavigate();
+
+    const validateEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrorMessage('');
+
+        if (!validateEmail(email)) {
+            setErrorMessage("El formato del correo no es válido.");
+            return;
+        }
+
+        if (!userName || !email || !password || !confirmPassword) {
+            setErrorMessage('Todos los campos son obligatorios.')
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            setErrorMessage('Las contraseñas no coinciden.')
+            return;
+        }
 
         try {
             const data = {
@@ -30,11 +54,13 @@ const SignUp = () => {
 
             if (dataJson.success) {
                 setRegisterSuccess(true)
+                navigate("/SignIn");
+
             } else {
-                console.log('Error en el registro:', dataJson.error);
+                setErrorMessage(dataJson.error || 'Error en el registro.')
             }
         } catch (error) {
-            console.log(error)
+            setErrorMessage('Ocurrió un error. Inténtalo de nuevo.')
         }
 
     }
@@ -75,9 +101,10 @@ const SignUp = () => {
 
                                     <div className='relative'>
                                         <input
+                                            type="email"
                                             id="email"
                                             name="email"
-                                            type="email"
+                                            required
                                             onChange={(event) => { setEmail(event.target.value) }}
                                             placeholder=""
                                             className="border-b w-[20rem] border-gray-300 py-1 focus:border-b-2 focus:border-[#e99825] transition-colors focus:outline-none peer bg-inherit"
@@ -125,18 +152,16 @@ const SignUp = () => {
                                     <div className="relative">
                                         <input
                                             id="confirmPassword"
-                                            name="passwconfirmPasswordord"
                                             type="password"
-                                            onChange={(event) => { setConfirmPassword(event.target.value) }}
-                                            placeholder=""
+                                            onChange={(e) => setConfirmPassword(e.target.value)}
                                             className="border-b w-[20rem] border-gray-300 py-1 focus:border-b-2 focus:border-[#e99825] transition-colors focus:outline-none peer bg-inherit"
                                         />
-                                        <label
-                                            htmlFor="confirmPassword"
-                                            className="absolute -top-4 text-xs left-0 cursor-text peer-focus:text-xs peer-focus:-top-4 transition-all peer-placeholder-shown:top-1 peer-placeholder-shown:text-sm"
-                                        >
+                                        <label htmlFor="confirmPassword" className="absolute -top-4 text-xs left-0 cursor-text peer-focus:text-xs peer-focus:-top-4 transition-all peer-placeholder-shown:top-1 peer-placeholder-shown:text-sm">
                                             Confirm Password
                                         </label>
+                                    </div>
+                                    <div style={{ minHeight: "20px" }}>
+                                        {errorMessage && <p className="text-red-500 text-sm max-w-[20rem]">{errorMessage}</p>}
                                     </div>
                                     {/* {password === confirmPassword ? <span className=''>Ok</span> : <span className='text-red-400'>Las contraseñas deben ser iguales</span>} */}
                                     <div className='flex items-center justify-center'>

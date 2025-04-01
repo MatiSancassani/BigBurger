@@ -8,26 +8,6 @@ export const CartProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [products, setProducts] = useState([]);
 
-    // Cargar usuario y carrito desde localStorage al iniciar
-    useEffect(() => {
-        const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-            const parsedUser = JSON.parse(storedUser);
-            setUser(parsedUser);
-        }
-
-        const storedCart = localStorage.getItem("cart");
-        if (storedCart) {
-            setCart(JSON.parse(storedCart));
-        }
-    }, []);
-
-    // Guardar el carrito en localStorage cada vez que cambie
-    useEffect(() => {
-        if (cart.length > 0) {
-            localStorage.setItem("cart", JSON.stringify(cart));
-        }
-    }, [cart]);
 
     // Obtener el carrito cuando el usuario esté definido
     useEffect(() => {
@@ -46,7 +26,6 @@ export const CartProvider = ({ children }) => {
 
             if (data.data.products) {
                 setCart(data.data.products);
-                localStorage.setItem("cart", JSON.stringify(data.data.products));
             }
         } catch (error) {
             console.error("Error al obtener el carrito:", error);
@@ -59,19 +38,21 @@ export const CartProvider = ({ children }) => {
             const response = await fetch("https://bigburgerbackend-1.onrender.com/api/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password })
+                body: JSON.stringify({ email, password }),
             });
+
             const data = await response.json();
 
-            if (data.success) {
-                setUser(data.data);
-                localStorage.setItem("user", JSON.stringify(data.data));
-                getCart(data.data.cart_id);
-            } else {
-                console.error("Error de login:", data.message);
+            if (!response.ok) {
+                throw new Error(data.message || "Error al iniciar sesión");
             }
+
+            setUser(data.data);
+            getCart(data.data.cart_id);
+            return { success: true };
         } catch (error) {
             console.error("Error de autenticación:", error);
+            return { success: false, message: error.message };
         }
     };
 
@@ -89,7 +70,6 @@ export const CartProvider = ({ children }) => {
     const logout = () => {
         setUser(null);
         setCart([]);
-        localStorage.removeItem("user");
         localStorage.removeItem("cart");
     };
 

@@ -13,42 +13,16 @@ const SignIn = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            await login(email, password);
-            navigate("/");
-        } catch (error) {
-            setErrorMessage("Error al iniciar sesión");
+        const response = await login(email, password);
+
+        if (!response.success) {
+            setErrorMessage(response.message);
+            return;
         }
+
+        navigate("/");
     };
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     try {
-    //         const data = {
-    //             email: email,
-    //             password: password
-    //         }
-    //         const response = await fetch("https://bigburgerbackend-1.onrender.com/api/login", {
-    //             method: 'POST',
-    //             headers: { 'Content-Type': 'application/json' },
-    //             credentials: 'include', // Necesario si `credentials: true` en backend
-    //             body: JSON.stringify(data)
-    //         })
-    //         const dataJson = await response.json();
-
-    //         localStorage.setItem('UserID', JSON.stringify(dataJson.data))
-    //         if (dataJson.success) {
-    //             setLoginUser(true)
-    //             navigate('/')
-    //         } else {
-    //             setErrorMessage(dataJson.message)
-    //         }
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-
-    // }
 
     return (
         <>
@@ -78,7 +52,7 @@ const SignIn = () => {
                                                 type="email"
                                                 onChange={(event) => { setEmail(event.target.value) }}
                                                 placeholder=""
-                                                className="border-b w-[20rem] border-gray-300 py-1 focus:border-b-2 focus:border-[#e99825] transition-colors focus:outline-none peer bg-inherit"
+                                                className="mb-[1rem] border-b w-[20rem] border-gray-300 py-1 focus:border-b-2 focus:border-[#e99825] transition-colors focus:outline-none peer bg-inherit"
                                             />
                                             <label
                                                 htmlFor="email"
@@ -104,11 +78,11 @@ const SignIn = () => {
                                                 Password
                                             </label>
                                         </div>
-                                        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-                                        <div className=''>
-                                            {/* <Link to='/'> */}
-                                            <button type='submit' onClick={handleSubmit}>Continuar</button>
-                                            {/* </Link> */}
+                                        <div style={{ minHeight: "20px" }}> {/* Espacio reservado para el error */}
+                                            {errorMessage && <p className='text-[#ce2e2e] text-[12px]'>{errorMessage}</p>}
+                                        </div>
+                                        <div className='flex items-center justify-center'>
+                                            <button className='' type='submit' onClick={handleSubmit}>Continuar</button>
                                         </div>
                                     </form>
                                 </div>

@@ -58,7 +58,7 @@ const NavBarToggle = () => {
                             <li>
                                 <Link to={'/menu'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Burgers</Link>
                             </li>
-                            <li><Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Contact</Link></li>
+                            <li><Link to={'/'} className="flex items-center text-gray-300 hover:bg-[#232323] py-3 px-4 rounded-xl transition-colors">Menu</Link></li>
                             <li>
                                 {user?.rol == true ? <div className="">
                                     <ButtonAdmin />

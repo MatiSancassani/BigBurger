@@ -7,6 +7,18 @@ function Cart() {
     const { cart, getCart, user } = useCart();
     const cart_id = user?.cart_id;
     const [toggleCart, setToggleCart] = useState(false);
+    const [paymentMethod, setPaymentMethod] = useState(null);
+    console.log(paymentMethod)
+    const [deliveryMethod, setDeliveryMethod] = useState(null);
+    console.log(deliveryMethod)
+
+
+    const handlePaymentSelection = (method) => {
+        setPaymentMethod(method);
+    };
+    const handleDeliverySelection = (method) => {
+        setDeliveryMethod(method);
+    };
 
     const handleClick = () => setToggleCart(!toggleCart);
 
@@ -72,13 +84,14 @@ function Cart() {
             for (const category in otherAdditionals) {
                 message += `*${category}*\n`;
                 otherAdditionals[category].forEach((additional) => {
-                    message += `• ${additional.title} - $${additional.price * additional.quantity}\n`;
+                    message += `x${additional.quantity} ${additional.title} - $${additional.price * additional.quantity}\n`;
                 });
             }
             message += "\n"; // Salto de línea después de la sección de cada burger
         });
 
         message += `*Total del Carrito:* *$${totalCartPrice}*`;
+        message += `\n\n*Metodo de pago:* *${paymentMethod}*\n*Metodo de entrega:* *${deliveryMethod}*`;
         message += "\n\n_Espero tu respuesta para confirmar mi pedido_";
 
         return encodeURIComponent(message);
@@ -121,7 +134,7 @@ function Cart() {
                                         <div className="w-full">
                                             {/* Información del producto */}
                                             <div className="flex items-center justify-between">
-                                                <p className="text-bold">Burger {item.id.title} x{item.quantity}</p>
+                                                <p className="text-bold">x{item.quantity} Burger {item.id.title}</p>
                                                 <p>$ {item.id.price * item.quantity}</p>
                                             </div>
 
@@ -132,7 +145,7 @@ function Cart() {
                                                         <li key={`${additional.title}-${index}`}>
                                                             <div className="flex items-center justify-between">
                                                                 <p className="text-neutral-600 text-[12px]">
-                                                                    {additional.title} x{additional.quantity}
+                                                                    {additional.quantity}x {additional.title}
                                                                 </p>
                                                                 <p>$ {additional.price * additional.quantity}</p>
                                                             </div>
@@ -156,18 +169,56 @@ function Cart() {
                     </ul>
                 </div>
 
-                <div className="flex items-center justify-center">
-                    <button onClick={deleteAllProducts} className="border-2 border-red-600 p-2 rounded-[10% / 50%]">
-                        Vaciar Carrito
-                    </button>
+
+
+
+                <div className="flex flex-col gap-4 mb-[2rem]">
+                    <p>Seleccionar método de pago:</p>
+                    <div className="flex items-center justify-center gap-4">
+                        <button
+                            className={`px-4 py-2 border rounded-lg ${paymentMethod === "Efectivo" ? "bg-[#5ea444de] text-white border-[#5ea444de]" : "bg-black"}`}
+                            onClick={() => handlePaymentSelection("Efectivo")}
+                        >
+                            Efectivo
+                        </button>
+                        <button
+                            className={`px-4 py-2 border rounded-lg ${paymentMethod === "Transferencia" ? "bg-[#009fe3b2] text-white border-[#009fe3b2]" : "bg-black"}`}
+                            onClick={() => handlePaymentSelection("Transferencia")}
+                        >
+                            Transferencia
+                        </button>
+                    </div>
                 </div>
 
-                <div className="flex items-center justify-center mt-4">
-                    <button className="flex items-center gap-2 justify-center border-2 border-green-600 p-2 rounded">
+                <div className="flex flex-col gap-4 mb-[2rem]">
+                    <p>Seleccionar forma de entrega:</p>
+                    <div className="flex items-center justify-center gap-4">
+                        <button
+                            className={`px-4 py-2 border rounded-lg ${deliveryMethod === "Delivery" ? "bg-[#f70050] text-white border-[#f70050]" : "bg-black"}`}
+                            onClick={() => handleDeliverySelection("Delivery")}
+                        >
+                            Delivery
+                        </button>
+                        <button
+                            className={`px-4 py-2 border rounded-lg ${deliveryMethod === "Lo retiro personalmente" ? "bg-[#17002f] text-white border-[#17002f]" : "bg-black"}`}
+                            onClick={() => handleDeliverySelection("Lo retiro personalmente")}
+                        >
+                            Lo retiro
+                        </button>
+                    </div>
+                </div>
+
+                <div className="flex items-center justify-center mb-4">
+                    <button className="flex items-center gap-2 justify-center border-2 border-green-600 p-2 rounded-[10px]">
                         <a href={`https://api.whatsapp.com/send?phone=5492645800162&text=${generateWhatsAppMessage()}`} target="_blank">
                             Enviar pedido por whatsapp
                         </a>
                         <p>$ {totalCartPrice}</p>
+                    </button>
+                </div>
+                <div className="flex items-center justify-center">
+                    <button onClick={deleteAllProducts} className="border-2 border-red-600 p-2 rounded-[10px]">
+                        Vaciar Carrito
                     </button>
                 </div>
 

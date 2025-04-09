@@ -159,7 +159,7 @@ function Cart() {
                                                 <p>Total:</p>
                                                 <p>$ {itemTotal}</p>
                                                 <HiOutlineTrash className="text-red-600 cursor-pointer"
-                                                    onClick={() => deleteProduct(item.id._id)} />
+                                                    onClick={() => deleteProduct(item.productInCartId)} />
                                             </div>
                                         </div>
                                     </div>
@@ -200,7 +200,7 @@ function Cart() {
                             Delivery
                         </button>
                         <button
-                            className={`px-4 py-2 border rounded-lg ${deliveryMethod === "Lo retiro personalmente" ? "bg-[#17002f] text-white border-[#17002f]" : "bg-black"}`}
+                            className={`px-4 py-2 border rounded-lg ${deliveryMethod === "Lo retiro personalmente" ? "bg-[#57248d] text-white border-[#57248d]" : "bg-black"}`}
                             onClick={() => handleDeliverySelection("Lo retiro personalmente")}
                         >
                             Lo retiro
